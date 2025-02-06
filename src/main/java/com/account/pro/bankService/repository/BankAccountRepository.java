@@ -7,6 +7,7 @@ import java.util.Collection;
 
 public interface BankAccountRepository {
 
+    // todo : public ?
     public Collection<BankAccount> getAll();
     public void save(BankAccount bankAccount);
     public void deposit(Account account);

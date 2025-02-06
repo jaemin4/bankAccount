@@ -1,5 +1,6 @@
 package com.account.pro.bankService.repository;
 
+import com.account.pro.bankService.exception.BankRuntimeException;
 import com.account.pro.bankService.repository.entity.Account;
 import com.account.pro.bankService.repository.entity.BankAccount;
 import com.account.pro.bankService.memory.BankAccountMemory;
@@ -36,8 +37,9 @@ public class BankAccountMemoryRepository implements BankAccountRepository{
         if (bankAccount != null) {
             Account existingAccount = bankAccount.getAccount();
             existingAccount.setBalance(existingAccount.getBalance() + account.getBalance());
+            // todo : tx 전 값 --> 후 값 로그 필수자리
         } else {
-            throw new IllegalArgumentException("해당 계좌가 존재하지 않습니다.");
+            throw new BankRuntimeException("해당 계좌가 존재하지 않습니다.");
         }
     }
 
@@ -52,7 +54,7 @@ public class BankAccountMemoryRepository implements BankAccountRepository{
             Account exsitingAccount = bankAccount.getAccount();
             exsitingAccount.setBalance(exsitingAccount.getBalance() - account.getBalance());
         } else{
-            throw new IllegalArgumentException("해당 계좌가 존재하지 않습니다.");
+            throw new BankRuntimeException("해당 계좌가 존재하지 않습니다.");
         }
 
     }

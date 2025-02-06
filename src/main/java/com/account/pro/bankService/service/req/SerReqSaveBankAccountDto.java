@@ -9,7 +9,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Builder
+//@Builder
 public class SerReqSaveBankAccountDto {
     private Long accountNumber;
     private int balance;

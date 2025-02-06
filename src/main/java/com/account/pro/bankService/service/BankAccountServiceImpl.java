@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
+// todo: persistence logic layer
 @Service
 @RequiredArgsConstructor
 public class BankAccountServiceImpl implements BankAccountService{
