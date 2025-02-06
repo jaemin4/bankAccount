@@ -1,0 +1,24 @@
+server:
+  port: 3030
+  servlet:
+    encoding:
+      force-response: true
+
+  application:
+    name: pro
+
+#  datasource:
+#    url: jdbc:mysql://my8003.gabiadb.com:3306/jmdb
+#    username: jmhost
+#    password: jaemin171717
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+
+
