@@ -25,8 +25,11 @@ public class BankAccountMemoryRepository implements BankAccountRepository{
     public void save(BankAccount bankAccount) {
         accountMap.put(accountMap.isEmpty() ? 1L : Collections.max(accountMap.keySet()) + 1,
                        bankAccount);
+        log.info("BankAccountRepository/save/success");
+
     }
 
+    // todo : tx 전 값 --> 후 값 로그 필수자리
     @Override
     public void deposit(Account account) {
         BankAccount bankAccount = accountMap.values().stream()
@@ -37,7 +40,8 @@ public class BankAccountMemoryRepository implements BankAccountRepository{
         if (bankAccount != null) {
             Account existingAccount = bankAccount.getAccount();
             existingAccount.setBalance(existingAccount.getBalance() + account.getBalance());
-            // todo : tx 전 값 --> 후 값 로그 필수자리
+            log.info("BankAccountRepository/deposit/success");
+
         } else {
             throw new BankRuntimeException("해당 계좌가 존재하지 않습니다.");
         }
@@ -53,6 +57,8 @@ public class BankAccountMemoryRepository implements BankAccountRepository{
         if(bankAccount != null){
             Account exsitingAccount = bankAccount.getAccount();
             exsitingAccount.setBalance(exsitingAccount.getBalance() - account.getBalance());
+            log.info("BankAccountRepository/withdraw/success");
+
         } else{
             throw new BankRuntimeException("해당 계좌가 존재하지 않습니다.");
         }

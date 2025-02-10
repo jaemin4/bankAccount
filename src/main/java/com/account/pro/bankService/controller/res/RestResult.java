@@ -23,6 +23,10 @@ public class RestResult {
 
     private String url;     // ckeditor 5 용으로 url 을 리턴하고 에디터 <img src="여기에 표기하기 위해서"> 에 표기
 
+    private String message;
+
+    private String status;
+
     public RestResult() { }
 
     public RestResult(String url) {
@@ -38,6 +42,19 @@ public class RestResult {
         this.data = data;
         return this;
     }
+
+    public RestResult(String message, String status, Map<String,Object> data){
+        this.message = message;
+        this.status = status;
+        this.data = data;
+    }
+
+    public RestResult(String message, String status){
+        this.message = message;
+        this.status = status;
+    }
+
+
 
 
 }
