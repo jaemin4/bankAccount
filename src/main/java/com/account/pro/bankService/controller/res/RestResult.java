@@ -43,6 +43,9 @@ public class RestResult {
         return this;
     }
 
+
+
+
     public RestResult(String message, String status, Map<String,Object> data){
         this.message = message;
         this.status = status;
