@@ -4,8 +4,15 @@ server:
     encoding:
       force-response: true
 
+spring:
   application:
     name: pro
+
+  mvc:
+    throw-exception-if-no-handler-found: true
+  web:
+    resources:
+      add-mappings: false
 
 #  datasource:
 #    url: jdbc:mysql://my8003.gabiadb.com:3306/jmdb

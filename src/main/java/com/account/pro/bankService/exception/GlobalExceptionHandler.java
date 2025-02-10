@@ -22,16 +22,19 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(NullPointerException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public RestError handleNullPointerException(NullPointerException e){
         return new RestError("bad_request", e.getMessage());
     }
 
     @ExceptionHandler(NoHandlerFoundException.class)
-    public RestError handleNoHandlerFoundException(NoHandlerFoundException e){
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public RestError handleException(NoHandlerFoundException e){
         return new RestError("not_found", e.getMessage());
     }
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     public RestError handleMethodNotAllowed(HttpRequestMethodNotSupportedException e){
         return new RestError("method_not_allowed", e.getMessage());
     }
