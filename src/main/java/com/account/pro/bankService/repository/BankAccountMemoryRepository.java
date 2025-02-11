@@ -37,14 +37,15 @@ public class BankAccountMemoryRepository implements BankAccountRepository{
                 .findFirst()
                 .orElse(null);
 
-        if (bankAccount != null) {
-            Account existingAccount = bankAccount.getAccount();
-            existingAccount.setBalance(existingAccount.getBalance() + account.getBalance());
-            log.info("BankAccountRepository/deposit/success");
-
-        } else {
+        // validation logic
+        if (bankAccount == null) {
             throw new BankRuntimeException("해당 계좌가 존재하지 않습니다.");
         }
+
+        // 정상로직 처리
+        Account existingAccount = bankAccount.getAccount();
+        existingAccount.setBalance(existingAccount.getBalance() + account.getBalance());
+        log.info("BankAccountRepository/deposit/success");
     }
 
     @Override

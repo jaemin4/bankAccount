@@ -8,6 +8,7 @@ import com.account.pro.bankService.controller.res.RestResult;
 import com.account.pro.bankService.service.BankFrontService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.*;
  *  - RestResult    200 OK
  *   {data: {"status", true, "status": "200", "message": "성공", ....}}
  */
+@Profile("bank-api")
 @Slf4j
 @RestController
 @RequestMapping("/bank")
