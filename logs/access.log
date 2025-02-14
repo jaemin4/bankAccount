@@ -1,0 +1,12 @@
+[JAEMIN] [2025-02-15 00:11:01 KST] [INFO ] [http-nio-3030-exec-1] c.a.p.b.filter.AccessLogFilter:39 - 응답 : org.apache.catalina.connector.CoyoteOutputStream@1136696f, 8192, 2025-02-15T00:11:01.354219800 -- 
+[JAEMIN] [2025-02-15 00:14:19 KST] [INFO ] [http-nio-3030-exec-1] c.a.p.b.filter.AccessLogFilter:41 - 응답 : org.apache.catalina.connector.CoyoteOutputStream@39e280fb, 8192, 2025-02-15T00:14:19.268266900 -- 
+[JAEMIN] [2025-02-15 00:15:07 KST] [INFO ] [http-nio-3030-exec-1] c.a.p.b.filter.AccessLogFilter:42 - 응답 : org.apache.catalina.connector.CoyoteOutputStream@20aa61dd, 8192, 2025-02-15T00:15:07.243892500 -- 
+[JAEMIN] [2025-02-15 00:15:07 KST] [INFO ] [http-nio-3030-exec-1] c.a.p.b.filter.AccessLogFilter:46 - body : {
+    "accountNumber": 99990001,
+    "balance": 10000,
+    "name": "min1",
+    "id": 1
+}
+ -- 
+[JAEMIN] [2025-02-15 00:31:31 KST] [INFO ] [http-nio-3030-exec-1] c.a.p.b.filter.AccessLogFilter:45 - 응답 : org.springframework.web.util.ContentCachingResponseWrapper$ResponseServletOutputStream@39e280fb, 8192, 2025-02-15T00:31:31.165669800 -- 
+[JAEMIN] [2025-02-15 00:31:31 KST] [INFO ] [http-nio-3030-exec-1] c.a.p.b.filter.AccessLogFilter:48 - body : {"data":{"data":[]},"message":"조회 성공","status":"true"} -- 

@@ -1,16 +1,18 @@
 package com.account.pro.bankService.filter;
 
+import com.account.pro.bankService.filter.request.AccessReqLog;
+import com.account.pro.bankService.filter.response.AccessResLog;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 
 @Slf4j
@@ -22,6 +24,7 @@ public class AccessLogFilter implements Filter {
      * AccessLog 필터링 및 로깅 처리를 담당하는 메서드.
      * "access" 프로파일이 활성화된 경우 필터를 건너뛰며,
      * `access-log.enabled` 설정에 따라 로깅 여부를 결정한다.
+     *  second -> millisecond -> microsecond -> nanosecond
      *
      * @param request  클라이언트의 요청 객체
      * @param response 서버의 응답 객체
@@ -31,29 +34,16 @@ public class AccessLogFilter implements Filter {
      */
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        ContentCachingRequestWrapper requestWrapper = new ContentCachingRequestWrapper((HttpServletRequest) request);
+        ContentCachingResponseWrapper responseWrapper = new ContentCachingResponseWrapper((HttpServletResponse) response);
 
-        HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+        AccessReqLog reqLog = new AccessReqLog(requestWrapper);
+        reqLog.logRequest();
 
-        // todo 아래를 활용해서 request body 와 response body 를 추출해보자.
-//        ContentCachingRequestWrapper requestWrapper = new ContentCachingRequestWrapper((HttpServletRequest) request);
-//        ContentCachingResponseWrapper responseWrapper = new ContentCachingResponseWrapper((HttpServletResponse) response);
+        chain.doFilter(requestWrapper, responseWrapper);
 
-        log.info(">>>>> {} {} {}",
-            httpServletRequest.getRequestURI(),
-            httpServletRequest.getHeader("User-Agent"),
-            httpServletRequest.getRemoteAddr()
-            );
-
-
-        // second -> millisecond -> microsecond -> nanosecond
-
-        // before
-        final LocalDateTime before = LocalDateTime.now();
-
-        chain.doFilter(request, response);
-
-        final LocalDateTime after = LocalDateTime.now();
-        // after
+        AccessResLog resLog = new AccessResLog(responseWrapper,reqLog);
+        resLog.logResponse();
 
         // todo AccessLog 를 만들어서 찍어보자.
     }

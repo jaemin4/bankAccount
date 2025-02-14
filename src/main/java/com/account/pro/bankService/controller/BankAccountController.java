@@ -8,7 +8,6 @@ import com.account.pro.bankService.controller.res.RestResult;
 import com.account.pro.bankService.service.BankFrontService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -25,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
  *  - RestResult    200 OK
  *   {data: {"status", true, "status": "200", "message": "성공", ....}}
  */
-@Profile("bank-api")
+//@Profile("bank-api")
 @Slf4j
 @RestController
 @RequestMapping("/bank")
@@ -59,9 +58,8 @@ public class BankAccountController {
     @PostMapping("/withdraw")
     public RestResult withdraw(@RequestBody BankAccountWithdrawParam param){
         log.info("/bank/withdraw : {}", param);
-
+        RestResult result = new RestResult();
         return bankFrontService.withdraw(param);
-
     }
 
     // todo: transfer 로 변경
