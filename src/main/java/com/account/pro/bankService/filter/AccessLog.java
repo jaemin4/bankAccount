@@ -55,52 +55,10 @@ public class AccessLog {
         this.requestAt = LocalDateTime.now();
     }
 
-    public AccessLog(String memberId, String uri, String method, String userAgent,
-                     String clientIp, String referer, LocalDateTime requestAt,
-                     String threadId, String host, String authorization,
-                     String queryParams, String headers, String requestBody) {
-        this.memberId = memberId;
-        this.uri = uri;
-        this.method = method;
-        this.userAgent = userAgent;
-        this.clientIp = clientIp;
-        this.referer = referer;
-        this.requestAt = requestAt;
-        this.threadId = threadId;
-        this.host = host;
-        this.authorization = authorization;
-        this.request = String.format("{ \"queryParams\": %s, \"headers\": %s, \"body\": %s }",
-                queryParams, headers, requestBody);
-    }
 
 
 
-    public AccessLog(String memberId, String uri, String method, String userAgent, String clientIp, String referer, LocalDateTime requestAt, String threadId) {
-        this.memberId = memberId;
-        this.uri = uri;
-        this.method = method;
-        this.userAgent = userAgent;
-        this.clientIp = clientIp;
-        this.referer = referer;
-        this.requestAt = requestAt;
-        this.threadId = threadId;
-    }
 
 
-    private static final ObjectMapper objectMapper = new ObjectMapper()
-            .registerModule(new JavaTimeModule()); // LocalDateTime 지원
 
-    public void loggingAccessLog(AccessLog logData) {
-        if (logData == null) {
-            log.warn("⚠ AccessLog 객체가 null입니다.");
-            return;
-        }
-
-        try {
-            String jsonLog = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(logData);
-            log.info("🔹 AccessLog Data:\n{}", jsonLog);
-        } catch (Exception e) {
-            log.error("⚠ AccessLog 변환 오류", e);
-        }
-    }
 }
