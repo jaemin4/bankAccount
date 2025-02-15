@@ -66,6 +66,8 @@ public class AccessReqLog {
         this.queryString = req.getQueryString();
         this.userAgent = req.getHeader("User-Agent");
         this.referer = req.getHeader("Referer");
+
+        // todo ipv6 로 가져오고 있습니다. 이걸 ipv4 로 가져오도록 해주세요. (힌트: vm option 설정)
         this.clientIp = Optional.ofNullable(req.getHeader("X-Forwarded-For")).orElse(req.getRemoteAddr());
         this.host = req.getHeader("Host");
         this.authorization = req.getHeader("Authorization");

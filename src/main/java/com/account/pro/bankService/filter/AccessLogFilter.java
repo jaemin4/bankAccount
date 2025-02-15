@@ -45,6 +45,7 @@ public class AccessLogFilter implements Filter {
         AccessResLog resLog = new AccessResLog(responseWrapper,reqLog);
         resLog.logResponse();
 
-        // todo AccessLog 를 만들어서 찍어보자.
+        // todo: 실제 응답이 나가지 않고 있습니다. (브라우저에서 /bank/getAll 로 확인해보시면 됩니다.)
+        // todo: 필터 체인을 통과한 후에는 반드시 응답 본문을 다시 복사해 주도록 해주세요.
     }
 }
