@@ -5,7 +5,7 @@ import com.account.pro.bankService.controller.request.BankAccountSaveParam;
 import com.account.pro.bankService.controller.request.BankAccountTransferParam;
 import com.account.pro.bankService.controller.request.BankAccountWithdrawParam;
 import com.account.pro.bankService.service.response.RestResult;
-import com.account.pro.bankService.service.BankFrontService;
+import com.account.pro.bankService.service.BankServiceMemory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class BankAccountController {
 
-    private final BankFrontService bankFrontService;
+    private final BankServiceMemory bankFrontService;
 
     // log.info("/bank/save : {}", toJson(param));
     // todo: 인터페이스는 꼭 필요할 때 씁시다.
