@@ -1,10 +1,10 @@
 package com.account.pro.bankService.controller;
 
-import com.account.pro.bankService.controller.req.BankAccountDepositParam;
-import com.account.pro.bankService.controller.req.BankAccountSaveParam;
-import com.account.pro.bankService.controller.req.BankAccountTransferParam;
-import com.account.pro.bankService.controller.req.BankAccountWithdrawParam;
-import com.account.pro.bankService.controller.res.RestResult;
+import com.account.pro.bankService.controller.request.BankAccountDepositParam;
+import com.account.pro.bankService.controller.request.BankAccountSaveParam;
+import com.account.pro.bankService.controller.request.BankAccountTransferParam;
+import com.account.pro.bankService.controller.request.BankAccountWithdrawParam;
+import com.account.pro.bankService.service.response.RestResult;
 import com.account.pro.bankService.service.BankFrontService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

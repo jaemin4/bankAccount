@@ -1,4 +1,4 @@
-package com.account.pro.bankService.controller.res;
+package com.account.pro.bankService.service.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

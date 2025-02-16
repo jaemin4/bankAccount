@@ -1,119 +1,243 @@
-[JAEMIN] [2025-02-15 00:10:19 KST] [INFO ] [main] com.account.pro.ProApplication:53 - Starting ProApplication using Java 21.0.2 with PID 3672 (C:\gitRepository\bankAccount\build\classes\java\main started by eheh4 in C:\gitRepository\bankAccount) -- 
-[JAEMIN] [2025-02-15 00:10:19 KST] [INFO ] [main] com.account.pro.ProApplication:652 - No active profile set, falling back to 1 default profile: "default" -- 
-[JAEMIN] [2025-02-15 00:10:20 KST] [INFO ] [main] com.account.pro.ProApplication:59 - Started ProApplication in 1.752 seconds (process running for 2.248) -- 
-[JAEMIN] [2025-02-15 00:10:49 KST] [INFO ] [main] com.account.pro.ProApplication:53 - Starting ProApplication using Java 21.0.2 with PID 20444 (C:\gitRepository\bankAccount\build\classes\java\main started by eheh4 in C:\gitRepository\bankAccount) -- 
-[JAEMIN] [2025-02-15 00:10:49 KST] [INFO ] [main] com.account.pro.ProApplication:652 - No active profile set, falling back to 1 default profile: "default" -- 
-[JAEMIN] [2025-02-15 00:10:50 KST] [INFO ] [main] com.account.pro.ProApplication:59 - Started ProApplication in 1.723 seconds (process running for 2.212) -- 
-[JAEMIN] [2025-02-15 00:11:01 KST] [INFO ] [http-nio-3030-exec-1] c.a.p.b.filter.request.AccessReqLog:124 - 
+[JAEMIN] [2025-02-17 00:02:44 KST] [INFO ] [http-nio-3030-exec-8] c.a.p.l.filter.request.AccessReqLog:108 - 
 🔹 AccessRequestLog
 ➡ Method: GET
 ➡ URI: /bank/getAll
 ➡ Query Params: {}
 ➡ Request Body: {    "accountNumber": 99990001,    "balance": 10000,    "name": "min1",    "id": 1}
-➡ Headers: {"content-length":"95","cookie":"Cookie_1=value","postman-token":"eae287ed-fa6c-4e92-a719-41f17162ef29","host":"localhost:3030","content-type":"application/json","connection":"keep-alive","accept-encoding":"gzip, deflate, br","user-agent":"PostmanRuntime/7.37.3","accept":"*/*"}
+➡ Headers: {"content-length":"95","cookie":"Cookie_1=value","postman-token":"6f8a2eec-1536-4d1d-abc4-d8fe46938983","host":"localhost:3030","content-type":"application/json","connection":"keep-alive","accept-encoding":"gzip, deflate, br","user-agent":"PostmanRuntime/7.37.3","accept":"*/*"}
 ➡ User-Agent: PostmanRuntime/7.37.3
 ➡ Client IP: 0:0:0:0:0:0:0:1
 ➡ Host: localhost:3030
-➡ Request At: 2025-02-15T00:11:01.034263700
-➡ Thread ID: http-nio-3030-exec-1 -- 
-[JAEMIN] [2025-02-15 00:11:01 KST] [INFO ] [http-nio-3030-exec-1] c.a.p.b.service.BankFrontService:30 - BankFrontService/getAll/success -- 
-[JAEMIN] [2025-02-15 00:14:14 KST] [INFO ] [main] com.account.pro.ProApplication:53 - Starting ProApplication using Java 21.0.2 with PID 21444 (C:\gitRepository\bankAccount\build\classes\java\main started by eheh4 in C:\gitRepository\bankAccount) -- 
-[JAEMIN] [2025-02-15 00:14:14 KST] [INFO ] [main] com.account.pro.ProApplication:652 - No active profile set, falling back to 1 default profile: "default" -- 
-[JAEMIN] [2025-02-15 00:14:15 KST] [INFO ] [main] com.account.pro.ProApplication:59 - Started ProApplication in 1.753 seconds (process running for 2.245) -- 
-[JAEMIN] [2025-02-15 00:14:19 KST] [INFO ] [http-nio-3030-exec-1] c.a.p.b.filter.request.AccessReqLog:124 - 
-🔹 AccessRequestLog
-➡ Method: GET
-➡ URI: /bank/getAll
-➡ Query Params: {}
-➡ Request Body: {    "accountNumber": 99990001,    "balance": 10000,    "name": "min1",    "id": 1}
-➡ Headers: {"content-length":"95","cookie":"Cookie_1=value","postman-token":"f77c355b-1787-4d23-b58d-212314490699","host":"localhost:3030","content-type":"application/json","connection":"keep-alive","accept-encoding":"gzip, deflate, br","user-agent":"PostmanRuntime/7.37.3","accept":"*/*"}
-➡ User-Agent: PostmanRuntime/7.37.3
-➡ Client IP: 0:0:0:0:0:0:0:1
-➡ Host: localhost:3030
-➡ Request At: 2025-02-15T00:14:19.019955900
-➡ Thread ID: http-nio-3030-exec-1 -- 
-[JAEMIN] [2025-02-15 00:14:19 KST] [INFO ] [http-nio-3030-exec-1] c.a.p.b.service.BankFrontService:30 - BankFrontService/getAll/success -- 
-[JAEMIN] [2025-02-15 00:14:59 KST] [INFO ] [main] com.account.pro.ProApplication:53 - Starting ProApplication using Java 21.0.2 with PID 17964 (C:\gitRepository\bankAccount\build\classes\java\main started by eheh4 in C:\gitRepository\bankAccount) -- 
-[JAEMIN] [2025-02-15 00:14:59 KST] [INFO ] [main] com.account.pro.ProApplication:652 - No active profile set, falling back to 1 default profile: "default" -- 
-[JAEMIN] [2025-02-15 00:15:00 KST] [INFO ] [main] com.account.pro.ProApplication:59 - Started ProApplication in 1.712 seconds (process running for 2.202) -- 
-[JAEMIN] [2025-02-15 00:15:06 KST] [INFO ] [http-nio-3030-exec-1] c.a.p.b.filter.request.AccessReqLog:124 - 
-🔹 AccessRequestLog
-➡ Method: GET
-➡ URI: /bank/getAll
-➡ Query Params: {}
-➡ Request Body: {    "accountNumber": 99990001,    "balance": 10000,    "name": "min1",    "id": 1}
-➡ Headers: {"content-length":"95","cookie":"Cookie_1=value","postman-token":"04bddee9-9511-40f2-ba17-aa5dc6503a90","host":"localhost:3030","content-type":"application/json","connection":"keep-alive","accept-encoding":"gzip, deflate, br","user-agent":"PostmanRuntime/7.37.3","accept":"*/*"}
-➡ User-Agent: PostmanRuntime/7.37.3
-➡ Client IP: 0:0:0:0:0:0:0:1
-➡ Host: localhost:3030
-➡ Request At: 2025-02-15T00:15:06.934277900
-➡ Thread ID: http-nio-3030-exec-1 -- 
-[JAEMIN] [2025-02-15 00:15:06 KST] [INFO ] [http-nio-3030-exec-1] c.a.p.b.service.BankFrontService:30 - BankFrontService/getAll/success -- 
-[JAEMIN] [2025-02-15 00:31:23 KST] [INFO ] [main] com.account.pro.ProApplication:53 - Starting ProApplication using Java 21.0.2 with PID 12020 (C:\gitRepository\bankAccount\build\classes\java\main started by eheh4 in C:\gitRepository\bankAccount) -- 
-[JAEMIN] [2025-02-15 00:31:23 KST] [INFO ] [main] com.account.pro.ProApplication:652 - No active profile set, falling back to 1 default profile: "default" -- 
-[JAEMIN] [2025-02-15 00:31:24 KST] [INFO ] [main] com.account.pro.ProApplication:59 - Started ProApplication in 1.702 seconds (process running for 2.224) -- 
-[JAEMIN] [2025-02-15 00:31:30 KST] [INFO ] [http-nio-3030-exec-1] c.a.p.b.filter.request.AccessReqLog:124 - 
-🔹 AccessRequestLog
-➡ Method: GET
-➡ URI: /bank/getAll
-➡ Query Params: {}
-➡ Request Body: {    "accountNumber": 99990001,    "balance": 10000,    "name": "min1",    "id": 1}
-➡ Headers: {"content-length":"95","cookie":"Cookie_1=value","postman-token":"24ff6e5c-43de-499c-bd42-1f66efad4d1b","host":"localhost:3030","content-type":"application/json","connection":"keep-alive","accept-encoding":"gzip, deflate, br","user-agent":"PostmanRuntime/7.37.3","accept":"*/*"}
-➡ User-Agent: PostmanRuntime/7.37.3
-➡ Client IP: 0:0:0:0:0:0:0:1
-➡ Host: localhost:3030
-➡ Request At: 2025-02-15T00:31:30.920487
-➡ Thread ID: http-nio-3030-exec-1 -- 
-[JAEMIN] [2025-02-15 00:31:30 KST] [INFO ] [http-nio-3030-exec-1] c.a.p.b.service.BankFrontService:30 - BankFrontService/getAll/success -- 
-[JAEMIN] [2025-02-15 01:00:12 KST] [INFO ] [main] com.account.pro.ProApplication:53 - Starting ProApplication using Java 21.0.2 with PID 22644 (C:\gitRepository\bankAccount\build\classes\java\main started by eheh4 in C:\gitRepository\bankAccount) -- 
-[JAEMIN] [2025-02-15 01:00:12 KST] [INFO ] [main] com.account.pro.ProApplication:652 - No active profile set, falling back to 1 default profile: "default" -- 
-[JAEMIN] [2025-02-15 01:00:15 KST] [INFO ] [main] com.account.pro.ProApplication:59 - Started ProApplication in 3.17 seconds (process running for 4.272) -- 
-[JAEMIN] [2025-02-15 01:01:30 KST] [INFO ] [main] com.account.pro.ProApplication:53 - Starting ProApplication using Java 21.0.2 with PID 22412 (C:\gitRepository\bankAccount\build\classes\java\main started by eheh4 in C:\gitRepository\bankAccount) -- 
-[JAEMIN] [2025-02-15 01:01:30 KST] [INFO ] [main] com.account.pro.ProApplication:652 - No active profile set, falling back to 1 default profile: "default" -- 
-[JAEMIN] [2025-02-15 01:01:32 KST] [INFO ] [main] com.account.pro.ProApplication:59 - Started ProApplication in 2.934 seconds (process running for 3.97) -- 
-[JAEMIN] [2025-02-15 01:03:06 KST] [INFO ] [main] com.account.pro.ProApplication:53 - Starting ProApplication using Java 21.0.2 with PID 14516 (C:\gitRepository\bankAccount\build\classes\java\main started by eheh4 in C:\gitRepository\bankAccount) -- 
-[JAEMIN] [2025-02-15 01:03:06 KST] [INFO ] [main] com.account.pro.ProApplication:652 - No active profile set, falling back to 1 default profile: "default" -- 
-[JAEMIN] [2025-02-15 01:03:08 KST] [INFO ] [main] com.account.pro.ProApplication:59 - Started ProApplication in 2.947 seconds (process running for 3.777) -- 
-[JAEMIN] [2025-02-15 01:03:28 KST] [INFO ] [http-nio-3030-exec-1] c.a.p.b.filter.request.AccessReqLog:124 - 
-🔹 AccessRequestLog
-➡ Method: GET
-➡ URI: /bank/getAll
-➡ Query Params: {}
-➡ Request Body: 
-➡ Headers: {"sec-fetch-mode":"navigate","sec-fetch-site":"none","accept-language":"ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7","cookie":"Idea-d1e0a6f6=8237deee-2afc-4674-8e29-c66658339844","sec-fetch-user":"?1","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7","sec-ch-ua":"\"Not A(Brand\";v=\"8\", \"Chromium\";v=\"132\", \"Google Chrome\";v=\"132\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","host":"localhost:3030","upgrade-insecure-requests":"1","connection":"keep-alive","cache-control":"max-age=0","accept-encoding":"gzip, deflate, br, zstd","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","sec-fetch-dest":"document"}
-➡ User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36
-➡ Client IP: 0:0:0:0:0:0:0:1
-➡ Host: localhost:3030
-➡ Request At: 2025-02-15T01:03:28.588856
-➡ Thread ID: http-nio-3030-exec-1 -- 
-[JAEMIN] [2025-02-15 01:03:28 KST] [INFO ] [http-nio-3030-exec-1] c.a.p.b.service.BankFrontService:30 - BankFrontService/getAll/success -- 
-[JAEMIN] [2025-02-15 01:03:29 KST] [INFO ] [http-nio-3030-exec-1] c.a.p.b.filter.response.AccessResLog:60 - 
+➡ Request At: 2025-02-17T00:02:44.555869800
+➡ Thread ID: http-nio-3030-exec-8 -- 
+[JAEMIN] [2025-02-17 00:02:44 KST] [INFO ] [http-nio-3030-exec-8] c.a.p.b.service.BankFrontService:30 - BankFrontService/getAll/success -- 
+[JAEMIN] [2025-02-17 00:02:44 KST] [INFO ] [http-nio-3030-exec-8] c.a.p.l.filter.response.AccessResLog:66 - 
 🔹 AccessResponseLog
-➡ ResponseAt: 2025-02-15T01:03:29.031826800
+➡ ResponseAt: 2025-02-17T00:02:44.782949400
 ➡ StatusCode: 200
-➡ status: SUCCESS_
-➡ responseBody: {"data":{"data":[]},"message":"조회 성공","status":"true"}
-➡ elapsed: 442 -- 
-[JAEMIN] [2025-02-15 01:06:27 KST] [INFO ] [main] com.account.pro.ProApplication:53 - Starting ProApplication using Java 21.0.2 with PID 2656 (C:\gitRepository\bankAccount\build\classes\java\main started by eheh4 in C:\gitRepository\bankAccount) -- 
-[JAEMIN] [2025-02-15 01:06:27 KST] [INFO ] [main] com.account.pro.ProApplication:652 - No active profile set, falling back to 1 default profile: "default" -- 
-[JAEMIN] [2025-02-15 01:06:29 KST] [INFO ] [main] com.account.pro.ProApplication:59 - Started ProApplication in 3.168 seconds (process running for 4.12) -- 
-[JAEMIN] [2025-02-15 01:06:33 KST] [INFO ] [http-nio-3030-exec-2] c.a.p.b.filter.request.AccessReqLog:124 - 
+➡ status: SUCCESS
+➡ responseBody: {"data":{"data":[]},"message":"조회 성공","status":"true"} -- 
+[JAEMIN] [2025-02-17 00:03:09 KST] [INFO ] [main] com.account.pro.ProApplication:53 - Starting ProApplication using Java 21.0.2 with PID 24968 (C:\gitRepository\bankAccount\build\classes\java\main started by eheh4 in C:\gitRepository\bankAccount) -- 
+[JAEMIN] [2025-02-17 00:03:09 KST] [INFO ] [main] com.account.pro.ProApplication:652 - No active profile set, falling back to 1 default profile: "default" -- 
+[JAEMIN] [2025-02-17 00:03:13 KST] [INFO ] [main] com.account.pro.ProApplication:59 - Started ProApplication in 4.529 seconds (process running for 5.049) -- 
+[JAEMIN] [2025-02-17 00:27:34 KST] [INFO ] [main] com.account.pro.ProApplication:53 - Starting ProApplication using Java 21.0.2 with PID 6240 (C:\gitRepository\bankAccount\build\classes\java\main started by eheh4 in C:\gitRepository\bankAccount) -- 
+[JAEMIN] [2025-02-17 00:27:35 KST] [INFO ] [main] com.account.pro.ProApplication:652 - No active profile set, falling back to 1 default profile: "default" -- 
+[JAEMIN] [2025-02-17 00:27:42 KST] [INFO ] [main] com.account.pro.ProApplication:59 - Started ProApplication in 8.405 seconds (process running for 9.49) -- 
+[JAEMIN] [2025-02-17 00:28:06 KST] [INFO ] [main] com.account.pro.ProApplication:53 - Starting ProApplication using Java 21.0.2 with PID 9000 (C:\gitRepository\bankAccount\build\classes\java\main started by eheh4 in C:\gitRepository\bankAccount) -- 
+[JAEMIN] [2025-02-17 00:28:06 KST] [INFO ] [main] com.account.pro.ProApplication:652 - No active profile set, falling back to 1 default profile: "default" -- 
+[JAEMIN] [2025-02-17 00:28:14 KST] [INFO ] [main] com.account.pro.ProApplication:59 - Started ProApplication in 8.571 seconds (process running for 9.628) -- 
+[JAEMIN] [2025-02-17 00:28:27 KST] [INFO ] [http-nio-3030-exec-1] c.a.p.l.service.AccessLogService:82 - 
 🔹 AccessRequestLog
 ➡ Method: GET
 ➡ URI: /bank/getAll
-➡ Query Params: {}
-➡ Request Body: 
-➡ Headers: {"sec-fetch-mode":"navigate","sec-fetch-site":"none","accept-language":"ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7","cookie":"Idea-d1e0a6f6=8237deee-2afc-4674-8e29-c66658339844","sec-fetch-user":"?1","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7","sec-ch-ua":"\"Not A(Brand\";v=\"8\", \"Chromium\";v=\"132\", \"Google Chrome\";v=\"132\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","host":"localhost:3030","upgrade-insecure-requests":"1","connection":"keep-alive","cache-control":"max-age=0","accept-encoding":"gzip, deflate, br, zstd","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","sec-fetch-dest":"document"}
-➡ User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36
+➡ Query Params: org.apache.catalina.util.ParameterMap@6cdcf05d
+➡ Request Body: {    "accountNumber": 99990001,    "balance": 10000,    "name": "min1",    "id": 1}
+➡ Headers: {content-length=95, cookie=Cookie_1=value, postman-token=31f85148-8ef1-4744-9d01-9224c3897719, host=localhost:3030, content-type=application/json, connection=keep-alive, accept-encoding=gzip, deflate, br, user-agent=PostmanRuntime/7.37.3, accept=*/*}
+➡ User-Agent: PostmanRuntime/7.37.3
 ➡ Client IP: 0:0:0:0:0:0:0:1
 ➡ Host: localhost:3030
-➡ Request At: 2025-02-15T01:06:33.447189600
+➡ Request At: 2025-02-17T00:28:27.861791900
+➡ Thread ID: http-nio-3030-exec-1 -- 
+[JAEMIN] [2025-02-17 00:28:27 KST] [INFO ] [http-nio-3030-exec-1] c.a.p.b.service.BankFrontService:30 - BankFrontService/getAll/success -- 
+[JAEMIN] [2025-02-17 00:28:28 KST] [INFO ] [http-nio-3030-exec-1] c.a.p.l.service.AccessLogService:99 - 
+🔹 AccessResponseLog
+➡ Response At: 2025-02-17T00:28:28.275877800
+➡ Status Code: SUCCESS
+➡ Status: 200
+➡ Response Body: {"data":{"data":[]},"message":"조회 성공","status":"true"}
+➡ Elapsed: 414 -- 
+[JAEMIN] [2025-02-17 00:30:34 KST] [INFO ] [main] com.account.pro.ProApplication:53 - Starting ProApplication using Java 21.0.2 with PID 10164 (C:\gitRepository\bankAccount\build\classes\java\main started by eheh4 in C:\gitRepository\bankAccount) -- 
+[JAEMIN] [2025-02-17 00:30:34 KST] [INFO ] [main] com.account.pro.ProApplication:652 - No active profile set, falling back to 1 default profile: "default" -- 
+[JAEMIN] [2025-02-17 00:30:41 KST] [INFO ] [main] com.account.pro.ProApplication:59 - Started ProApplication in 8.017 seconds (process running for 9.396) -- 
+[JAEMIN] [2025-02-17 00:31:06 KST] [INFO ] [http-nio-3030-exec-2] c.a.p.l.service.AccessLogService:82 - 
+🔹 AccessRequestLog
+➡ Method: GET
+➡ URI: /bank/getAll
+➡ Query Params: org.apache.catalina.util.ParameterMap@78ada259
+➡ Request Body: {    "accountNumber": 99990001,    "balance": 10000,    "name": "min1",    "id": 1}
+➡ Headers: {content-length=95, cookie=Cookie_1=value, postman-token=fea7b286-4209-49ee-b08f-d5e8f68b3832, host=localhost:3030, content-type=application/json, connection=keep-alive, accept-encoding=gzip, deflate, br, user-agent=PostmanRuntime/7.37.3, accept=*/*}
+➡ User-Agent: PostmanRuntime/7.37.3
+➡ Client IP: 0:0:0:0:0:0:0:1
+➡ Host: localhost:3030
+➡ Request At: 2025-02-17T00:31:06.268407
 ➡ Thread ID: http-nio-3030-exec-2 -- 
-[JAEMIN] [2025-02-15 01:06:33 KST] [INFO ] [http-nio-3030-exec-2] c.a.p.b.service.BankFrontService:30 - BankFrontService/getAll/success -- 
-[JAEMIN] [2025-02-15 01:06:33 KST] [INFO ] [http-nio-3030-exec-2] c.a.p.b.filter.response.AccessResLog:60 - 
+[JAEMIN] [2025-02-17 00:31:06 KST] [INFO ] [http-nio-3030-exec-2] c.a.p.b.service.BankFrontService:30 - BankFrontService/getAll/success -- 
+[JAEMIN] [2025-02-17 00:31:06 KST] [INFO ] [http-nio-3030-exec-2] c.a.p.l.service.AccessLogService:99 - 
 🔹 AccessResponseLog
-➡ ResponseAt: 2025-02-15T01:06:33.901902100
-➡ StatusCode: 200
-➡ status: SUCCESS_
-➡ responseBody: {"data":{"data":[]},"message":"조회 성공","status":"true"}
-➡ elapsed: 454 ms -- 
+➡ Response At: 2025-02-17T00:31:06.696805500
+➡ Status Code: SUCCESS
+➡ Status: 200
+➡ Response Body: {"data":{"data":[]},"message":"조회 성공","status":"true"}
+➡ Elapsed: 428 -- 
+[JAEMIN] [2025-02-17 00:31:08 KST] [INFO ] [http-nio-3030-exec-3] c.a.p.l.service.AccessLogService:82 - 
+🔹 AccessRequestLog
+➡ Method: GET
+➡ URI: /bank/getAll
+➡ Query Params: org.apache.catalina.util.ParameterMap@2abde387
+➡ Request Body: {    "accountNumber": 99990001,    "balance": 10000,    "name": "min1",    "id": 1}
+➡ Headers: {content-length=95, cookie=Cookie_1=value, postman-token=ce82d69a-ff03-437b-89e4-736b2cb7da1d, host=localhost:3030, content-type=application/json, connection=keep-alive, accept-encoding=gzip, deflate, br, user-agent=PostmanRuntime/7.37.3, accept=*/*}
+➡ User-Agent: PostmanRuntime/7.37.3
+➡ Client IP: 0:0:0:0:0:0:0:1
+➡ Host: localhost:3030
+➡ Request At: 2025-02-17T00:31:08.018179200
+➡ Thread ID: http-nio-3030-exec-3 -- 
+[JAEMIN] [2025-02-17 00:31:08 KST] [INFO ] [http-nio-3030-exec-3] c.a.p.b.service.BankFrontService:30 - BankFrontService/getAll/success -- 
+[JAEMIN] [2025-02-17 00:31:08 KST] [INFO ] [http-nio-3030-exec-3] c.a.p.l.service.AccessLogService:99 - 
+🔹 AccessResponseLog
+➡ Response At: 2025-02-17T00:31:08.020432
+➡ Status Code: SUCCESS
+➡ Status: 200
+➡ Response Body: {"data":{"data":[]},"message":"조회 성공","status":"true"}
+➡ Elapsed: 2 -- 
+[JAEMIN] [2025-02-17 00:31:08 KST] [INFO ] [http-nio-3030-exec-4] c.a.p.l.service.AccessLogService:82 - 
+🔹 AccessRequestLog
+➡ Method: GET
+➡ URI: /bank/getAll
+➡ Query Params: org.apache.catalina.util.ParameterMap@26dc2a51
+➡ Request Body: {    "accountNumber": 99990001,    "balance": 10000,    "name": "min1",    "id": 1}
+➡ Headers: {content-length=95, cookie=Cookie_1=value, postman-token=ca57f1a7-264d-45d1-b2bc-235b4c3db9b9, host=localhost:3030, content-type=application/json, connection=keep-alive, accept-encoding=gzip, deflate, br, user-agent=PostmanRuntime/7.37.3, accept=*/*}
+➡ User-Agent: PostmanRuntime/7.37.3
+➡ Client IP: 0:0:0:0:0:0:0:1
+➡ Host: localhost:3030
+➡ Request At: 2025-02-17T00:31:08.984181500
+➡ Thread ID: http-nio-3030-exec-4 -- 
+[JAEMIN] [2025-02-17 00:31:08 KST] [INFO ] [http-nio-3030-exec-4] c.a.p.b.service.BankFrontService:30 - BankFrontService/getAll/success -- 
+[JAEMIN] [2025-02-17 00:31:08 KST] [INFO ] [http-nio-3030-exec-4] c.a.p.l.service.AccessLogService:99 - 
+🔹 AccessResponseLog
+➡ Response At: 2025-02-17T00:31:08.989173300
+➡ Status Code: SUCCESS
+➡ Status: 200
+➡ Response Body: {"data":{"data":[]},"message":"조회 성공","status":"true"}
+➡ Elapsed: 4 -- 
+[JAEMIN] [2025-02-17 00:31:09 KST] [INFO ] [http-nio-3030-exec-5] c.a.p.l.service.AccessLogService:82 - 
+🔹 AccessRequestLog
+➡ Method: GET
+➡ URI: /bank/getAll
+➡ Query Params: org.apache.catalina.util.ParameterMap@585ad856
+➡ Request Body: {    "accountNumber": 99990001,    "balance": 10000,    "name": "min1",    "id": 1}
+➡ Headers: {content-length=95, cookie=Cookie_1=value, postman-token=3d9146ae-974f-4b6c-939f-09d3d34af65f, host=localhost:3030, content-type=application/json, connection=keep-alive, accept-encoding=gzip, deflate, br, user-agent=PostmanRuntime/7.37.3, accept=*/*}
+➡ User-Agent: PostmanRuntime/7.37.3
+➡ Client IP: 0:0:0:0:0:0:0:1
+➡ Host: localhost:3030
+➡ Request At: 2025-02-17T00:31:09.758495600
+➡ Thread ID: http-nio-3030-exec-5 -- 
+[JAEMIN] [2025-02-17 00:31:09 KST] [INFO ] [http-nio-3030-exec-5] c.a.p.b.service.BankFrontService:30 - BankFrontService/getAll/success -- 
+[JAEMIN] [2025-02-17 00:31:09 KST] [INFO ] [http-nio-3030-exec-5] c.a.p.l.service.AccessLogService:99 - 
+🔹 AccessResponseLog
+➡ Response At: 2025-02-17T00:31:09.761495300
+➡ Status Code: SUCCESS
+➡ Status: 200
+➡ Response Body: {"data":{"data":[]},"message":"조회 성공","status":"true"}
+➡ Elapsed: 2 -- 
+[JAEMIN] [2025-02-17 00:31:10 KST] [INFO ] [http-nio-3030-exec-6] c.a.p.l.service.AccessLogService:82 - 
+🔹 AccessRequestLog
+➡ Method: GET
+➡ URI: /bank/getAll
+➡ Query Params: org.apache.catalina.util.ParameterMap@310b40d
+➡ Request Body: {    "accountNumber": 99990001,    "balance": 10000,    "name": "min1",    "id": 1}
+➡ Headers: {content-length=95, cookie=Cookie_1=value, postman-token=9203cec9-1ec0-4b69-a4fa-5a42c864dadc, host=localhost:3030, content-type=application/json, connection=keep-alive, accept-encoding=gzip, deflate, br, user-agent=PostmanRuntime/7.37.3, accept=*/*}
+➡ User-Agent: PostmanRuntime/7.37.3
+➡ Client IP: 0:0:0:0:0:0:0:1
+➡ Host: localhost:3030
+➡ Request At: 2025-02-17T00:31:10.607806800
+➡ Thread ID: http-nio-3030-exec-6 -- 
+[JAEMIN] [2025-02-17 00:31:10 KST] [INFO ] [http-nio-3030-exec-6] c.a.p.b.service.BankFrontService:30 - BankFrontService/getAll/success -- 
+[JAEMIN] [2025-02-17 00:31:10 KST] [INFO ] [http-nio-3030-exec-6] c.a.p.l.service.AccessLogService:99 - 
+🔹 AccessResponseLog
+➡ Response At: 2025-02-17T00:31:10.611838800
+➡ Status Code: SUCCESS
+➡ Status: 200
+➡ Response Body: {"data":{"data":[]},"message":"조회 성공","status":"true"}
+➡ Elapsed: 4 -- 
+[JAEMIN] [2025-02-17 00:32:02 KST] [INFO ] [http-nio-3030-exec-7] c.a.p.l.service.AccessLogService:82 - 
+🔹 AccessRequestLog
+➡ Method: GET
+➡ URI: /bank/getAll
+➡ Query Params: org.apache.catalina.util.ParameterMap@31e171
+➡ Query String: 1
+➡ Request Body: {    "accountNumber": 99990001,    "balance": 10000,    "name": "min1",    "id": 1}
+➡ Headers: {authorization=Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImVoZWg0NzU2QG5hdmVyLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3Mzg0NzA3MTksImV4cCI6MTczODQ3Mjg3OX0.t4_iI0kc73jun5w-WxSyCqj2g3om-zQMKxiMF5jSmqw, content-length=95, cookie=Cookie_1=value, postman-token=8e9f2df0-9649-48fc-91ab-9cf7477a601d, host=localhost:3030, content-type=application/json, connection=keep-alive, accept-encoding=gzip, deflate, br, user-agent=PostmanRuntime/7.37.3, accept=*/*}
+➡ User-Agent: PostmanRuntime/7.37.3
+➡ Client IP: 0:0:0:0:0:0:0:1
+➡ Host: localhost:3030
+➡ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImVoZWg0NzU2QG5hdmVyLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3Mzg0NzA3MTksImV4cCI6MTczODQ3Mjg3OX0.t4_iI0kc73jun5w-WxSyCqj2g3om-zQMKxiMF5jSmqw
+➡ Request At: 2025-02-17T00:32:02.218805600
+➡ Thread ID: http-nio-3030-exec-7 -- 
+[JAEMIN] [2025-02-17 00:32:02 KST] [INFO ] [http-nio-3030-exec-7] c.a.p.b.service.BankFrontService:30 - BankFrontService/getAll/success -- 
+[JAEMIN] [2025-02-17 00:32:02 KST] [INFO ] [http-nio-3030-exec-7] c.a.p.l.service.AccessLogService:99 - 
+🔹 AccessResponseLog
+➡ Response At: 2025-02-17T00:32:02.221802600
+➡ Status Code: SUCCESS
+➡ Status: 200
+➡ Response Body: {"data":{"data":[]},"message":"조회 성공","status":"true"}
+➡ Elapsed: 2 -- 
+[JAEMIN] [2025-02-17 00:33:20 KST] [INFO ] [main] com.account.pro.ProApplication:53 - Starting ProApplication using Java 21.0.2 with PID 11860 (C:\gitRepository\bankAccount\build\classes\java\main started by eheh4 in C:\gitRepository\bankAccount) -- 
+[JAEMIN] [2025-02-17 00:33:20 KST] [INFO ] [main] com.account.pro.ProApplication:652 - No active profile set, falling back to 1 default profile: "default" -- 
+[JAEMIN] [2025-02-17 00:33:27 KST] [INFO ] [main] com.account.pro.ProApplication:59 - Started ProApplication in 7.649 seconds (process running for 8.739) -- 
+[JAEMIN] [2025-02-17 00:34:19 KST] [INFO ] [http-nio-3030-exec-1] c.a.p.l.service.AccessLogService:82 - 
+🔹 AccessRequestLog
+➡ Method: POST
+➡ URI: /bank/getAll
+➡ Query Params: org.apache.catalina.util.ParameterMap@63fef74
+➡ Query String: 1
+➡ Request Body: 
+➡ Headers: {authorization=Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImVoZWg0NzU2QG5hdmVyLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3Mzg0NzA3MTksImV4cCI6MTczODQ3Mjg3OX0.t4_iI0kc73jun5w-WxSyCqj2g3om-zQMKxiMF5jSmqw, content-length=95, cookie=Cookie_1=value, postman-token=3ebf0ba6-111a-420e-9ae3-c80333b67eb0, host=localhost:3030, content-type=application/json, connection=keep-alive, accept-encoding=gzip, deflate, br, user-agent=PostmanRuntime/7.37.3, accept=*/*}
+➡ User-Agent: PostmanRuntime/7.37.3
+➡ Client IP: 0:0:0:0:0:0:0:1
+➡ Host: localhost:3030
+➡ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImVoZWg0NzU2QG5hdmVyLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3Mzg0NzA3MTksImV4cCI6MTczODQ3Mjg3OX0.t4_iI0kc73jun5w-WxSyCqj2g3om-zQMKxiMF5jSmqw
+➡ Request At: 2025-02-17T00:34:19.351506200
+➡ Thread ID: http-nio-3030-exec-1 -- 
+[JAEMIN] [2025-02-17 00:34:19 KST] [INFO ] [http-nio-3030-exec-1] c.a.p.l.service.AccessLogService:99 - 
+🔹 AccessResponseLog
+➡ Response At: 2025-02-17T00:34:19.724134
+➡ Status Code: ERROR
+➡ Status: 404
+➡ Response Body: {"id":"method_not_allowed","message":"Request method 'POST' is not supported"}
+➡ Elapsed: 372 -- 
+[JAEMIN] [2025-02-17 00:43:12 KST] [INFO ] [main] com.account.pro.ProApplication:53 - Starting ProApplication using Java 21.0.2 with PID 22640 (C:\gitRepository\bankAccount\build\classes\java\main started by eheh4 in C:\gitRepository\bankAccount) -- 
+[JAEMIN] [2025-02-17 00:43:12 KST] [INFO ] [main] com.account.pro.ProApplication:652 - No active profile set, falling back to 1 default profile: "default" -- 
+[JAEMIN] [2025-02-17 00:43:20 KST] [INFO ] [main] com.account.pro.ProApplication:59 - Started ProApplication in 8.422 seconds (process running for 9.59) -- 
+[JAEMIN] [2025-02-17 00:43:25 KST] [INFO ] [http-nio-3030-exec-2] c.a.p.l.service.AccessLogService:82 - 
+🔹 AccessRequestLog
+➡ Method: POST
+➡ URI: /bank/getAll
+➡ Query Params: org.apache.catalina.util.ParameterMap@426c1cf2
+➡ Query String: 1
+➡ Request Body: 
+➡ Headers: {authorization=Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImVoZWg0NzU2QG5hdmVyLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3Mzg0NzA3MTksImV4cCI6MTczODQ3Mjg3OX0.t4_iI0kc73jun5w-WxSyCqj2g3om-zQMKxiMF5jSmqw, content-length=95, cookie=Cookie_1=value, postman-token=fd540109-c925-4324-b1d0-688f787ab58d, host=localhost:3030, content-type=application/json, connection=keep-alive, accept-encoding=gzip, deflate, br, user-agent=PostmanRuntime/7.37.3, accept=*/*}
+➡ User-Agent: PostmanRuntime/7.37.3
+➡ Client IP: 0:0:0:0:0:0:0:1
+➡ Host: localhost:3030
+➡ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImVoZWg0NzU2QG5hdmVyLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3Mzg0NzA3MTksImV4cCI6MTczODQ3Mjg3OX0.t4_iI0kc73jun5w-WxSyCqj2g3om-zQMKxiMF5jSmqw
+➡ Request At: 2025-02-17T00:43:24.629948400
+➡ Thread ID: http-nio-3030-exec-2 -- 
+[JAEMIN] [2025-02-17 00:43:25 KST] [INFO ] [http-nio-3030-exec-2] c.a.p.l.service.AccessLogService:99 - 
+🔹 AccessResponseLog
+➡ Response At: 2025-02-17T00:43:25.020014700
+➡ Status Code: ERROR
+➡ Status: 404
+➡ Response Body: {"id":"method_not_allowed","message":"Request method 'POST' is not supported"}
+➡ Elapsed: 390 -- 
+[JAEMIN] [2025-02-17 00:43:31 KST] [INFO ] [http-nio-3030-exec-3] c.a.p.b.service.BankFrontService:30 - BankFrontService/getAll/success -- 
+[JAEMIN] [2025-02-17 00:43:31 KST] [INFO ] [http-nio-3030-exec-3] c.a.p.l.service.AccessLogService:82 - 
+🔹 AccessRequestLog
+➡ Method: GET
+➡ URI: /bank/getAll
+➡ Query Params: org.apache.catalina.util.ParameterMap@2be287bd
+➡ Query String: 1
+➡ Request Body: 
+➡ Headers: {authorization=Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImVoZWg0NzU2QG5hdmVyLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3Mzg0NzA3MTksImV4cCI6MTczODQ3Mjg3OX0.t4_iI0kc73jun5w-WxSyCqj2g3om-zQMKxiMF5jSmqw, content-length=95, cookie=Cookie_1=value, postman-token=fbfa6b27-14de-4c2a-a087-2e1fba926f77, host=localhost:3030, content-type=application/json, connection=keep-alive, accept-encoding=gzip, deflate, br, user-agent=PostmanRuntime/7.37.3, accept=*/*}
+➡ User-Agent: PostmanRuntime/7.37.3
+➡ Client IP: 0:0:0:0:0:0:0:1
+➡ Host: localhost:3030
+➡ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImVoZWg0NzU2QG5hdmVyLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3Mzg0NzA3MTksImV4cCI6MTczODQ3Mjg3OX0.t4_iI0kc73jun5w-WxSyCqj2g3om-zQMKxiMF5jSmqw
+➡ Request At: 2025-02-17T00:43:31.083783600
+➡ Thread ID: http-nio-3030-exec-3 -- 
+[JAEMIN] [2025-02-17 00:43:31 KST] [INFO ] [http-nio-3030-exec-3] c.a.p.l.service.AccessLogService:99 - 
+🔹 AccessResponseLog
+➡ Response At: 2025-02-17T00:43:31.168165400
+➡ Status Code: SUCCESS
+➡ Status: 200
+➡ Response Body: {"data":{"data":[]},"message":"조회 성공","status":"true"}
+➡ Elapsed: 84 -- 

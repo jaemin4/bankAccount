@@ -1,11 +1,10 @@
-package com.account.pro.bankService.controller.res;
+package com.account.pro.bankService.service.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 

@@ -1,6 +1,6 @@
 package com.account.pro.bankService.controller;
 
-import com.account.pro.bankService.controller.res.RestResult;
+import com.account.pro.bankService.service.response.RestResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.*;

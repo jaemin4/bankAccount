@@ -1,10 +1,10 @@
 package com.account.pro.bankService.service;
 
-import com.account.pro.bankService.controller.req.BankAccountDepositParam;
-import com.account.pro.bankService.controller.req.BankAccountSaveParam;
-import com.account.pro.bankService.controller.req.BankAccountTransferParam;
-import com.account.pro.bankService.controller.req.BankAccountWithdrawParam;
-import com.account.pro.bankService.controller.res.RestResult;
+import com.account.pro.bankService.controller.request.BankAccountDepositParam;
+import com.account.pro.bankService.controller.request.BankAccountSaveParam;
+import com.account.pro.bankService.controller.request.BankAccountTransferParam;
+import com.account.pro.bankService.controller.request.BankAccountWithdrawParam;
+import com.account.pro.bankService.service.response.RestResult;
 import com.account.pro.bankService.repository.BankAccountRepository;
 import com.account.pro.bankService.repository.entity.Account;
 import com.account.pro.bankService.repository.entity.BankAccount;

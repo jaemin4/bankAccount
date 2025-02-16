@@ -1,4 +1,4 @@
-package com.account.pro.bankService.filter;
+package com.account.pro.logService.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;

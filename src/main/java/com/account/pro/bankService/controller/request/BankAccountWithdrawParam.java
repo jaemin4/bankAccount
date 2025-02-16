@@ -1,4 +1,4 @@
-package com.account.pro.bankService.controller.req;
+package com.account.pro.bankService.controller.request;
 
 import lombok.Getter;
 import lombok.Setter;

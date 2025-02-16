@@ -1,7 +1,6 @@
-package com.account.pro.bankService.filter;
+package com.account.pro.logService.filter;
 
-import com.account.pro.bankService.filter.request.AccessReqLog;
-import com.account.pro.bankService.filter.response.AccessResLog;
+import com.account.pro.logService.service.AccessLogService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -12,13 +11,14 @@ import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 
 @Slf4j
 @Component
 @RequiredArgsConstructor
 public class AccessLogFilter implements Filter {
+
+    private final AccessLogService accessLogService;
 
     /**
      * AccessLog 필터링 및 로깅 처리를 담당하는 메서드.
@@ -37,14 +37,15 @@ public class AccessLogFilter implements Filter {
         ContentCachingRequestWrapper requestWrapper = new ContentCachingRequestWrapper((HttpServletRequest) request);
         ContentCachingResponseWrapper responseWrapper = new ContentCachingResponseWrapper((HttpServletResponse) response);
 
-        AccessReqLog reqLog = new AccessReqLog(requestWrapper);
-        reqLog.logRequest();
+        LocalDateTime requestAt = LocalDateTime.now();
+        chain.doFilter(requestWrapper,responseWrapper);
+        LocalDateTime responseAt = LocalDateTime.now();
 
-        chain.doFilter(requestWrapper, responseWrapper);
+        log.info("AccessLogService Save : {}",accessLogService.saveAccessLog(requestWrapper,responseWrapper,requestAt,responseAt));
+        accessLogService.printReqAccessLog(requestWrapper,requestAt);
+        accessLogService.printResAccessLog(responseWrapper,requestAt,responseAt);
 
-        AccessResLog resLog = new AccessResLog(responseWrapper,reqLog);
-        resLog.logResponse();
+        responseWrapper.copyBodyToResponse();
 
-        // todo AccessLog 를 만들어서 찍어보자.
     }
 }
