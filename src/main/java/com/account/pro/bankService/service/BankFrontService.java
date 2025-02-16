@@ -21,6 +21,13 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class BankFrontService {
 
+    // todo: 레이어를 하나 더 추가해주세요. Controller --> FrontService --> Service --> Repository
+    // todo: Repository 를 Memory 가 아니라 DB로 저장하도록 코드를 변경해주세요.
+    // todo: 제가 AWS 에 설치하고 운용하고 있는 MySQL 계정을 드립니다. 여기에 앞으로 작업해주시면 됩니다.
+    //  -> url: mbslaw-restored.cszatmtp17tv.ap-northeast-2.rds.amazonaws.com
+    //  -> db: min_bank
+    //  -> username: min_bank
+    //  -> password: @@min_bank##!!
     private final BankAccountRepository bankAccountRepository;
 
     public RestResult getAll() {
