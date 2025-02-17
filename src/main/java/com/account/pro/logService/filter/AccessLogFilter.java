@@ -41,7 +41,12 @@ public class AccessLogFilter implements Filter {
         chain.doFilter(requestWrapper,responseWrapper);
         LocalDateTime responseAt = LocalDateTime.now();
 
-        log.info("AccessLogService Save : {}",accessLogService.saveAccessLog(requestWrapper,responseWrapper,requestAt,responseAt));
+        // TPS (Transaction Per Second) : 1초당 처리량 --> 1000 TPS X 1분정도 지속되면, 1분에 60,000 번 인 경우에는 ? DB CPU 는 100% 향해 갑니다.
+        // 비동기 처리를 하면 가장 확실한 방법입니다.
+        // fire & forget 방식 : 비동기 방식으로 처리하면, 응답을 기다리지 않고, 바로 다음 작업을 수행합니다.
+        // todo : RabbitMQ 로 보내서 저장하도록 해주세요. 컨슈머를 하나 만들어서 저장하면 됩니다.
+        log.info("AccessLogService Save : {}", accessLogService.saveAccessLog(requestWrapper,responseWrapper,requestAt,responseAt));
+
         accessLogService.printReqAccessLog(requestWrapper,requestAt);
         accessLogService.printResAccessLog(responseWrapper,requestAt,responseAt);
 
