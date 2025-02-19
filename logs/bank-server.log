@@ -509,3 +509,17 @@
 [JAEMIN] [2025-02-17 01:56:52 KST] [INFO ] [main] com.account.pro.ProApplication:59 - Started ProApplication in 9.541 seconds (process running for 10.298) -- 
 [JAEMIN] [2025-02-17 01:56:56 KST] [INFO ] [main] com.account.pro.ProApplication:53 - Starting ProApplication using Java 21.0.2 with PID 17124 (C:\gitRepository\bankAccount\build\classes\java\main started by eheh4 in C:\gitRepository\bankAccount) -- 
 [JAEMIN] [2025-02-17 01:56:56 KST] [INFO ] [main] com.account.pro.ProApplication:652 - No active profile set, falling back to 1 default profile: "default" -- 
+[JAEMIN] [2025-02-20 02:17:15 KST] [INFO ] [main] com.account.pro.ProApplication:53 - Starting ProApplication using Java 21.0.2 with PID 27916 (C:\gitRepository\bankAccount\build\classes\java\main started by eheh4 in C:\gitRepository\bankAccount) -- 
+[JAEMIN] [2025-02-20 02:17:15 KST] [INFO ] [main] com.account.pro.ProApplication:652 - No active profile set, falling back to 1 default profile: "default" -- 
+[JAEMIN] [2025-02-20 02:17:23 KST] [INFO ] [main] com.account.pro.ProApplication:59 - Started ProApplication in 8.799 seconds (process running for 10.049) -- 
+[JAEMIN] [2025-02-20 02:19:53 KST] [INFO ] [main] com.account.pro.ProApplication:53 - Starting ProApplication using Java 21.0.2 with PID 28800 (C:\gitRepository\bankAccount\build\classes\java\main started by eheh4 in C:\gitRepository\bankAccount) -- 
+[JAEMIN] [2025-02-20 02:19:53 KST] [INFO ] [main] com.account.pro.ProApplication:652 - No active profile set, falling back to 1 default profile: "default" -- 
+[JAEMIN] [2025-02-20 02:20:00 KST] [INFO ] [main] com.account.pro.ProApplication:59 - Started ProApplication in 8.666 seconds (process running for 9.971) -- 
+[JAEMIN] [2025-02-20 02:20:32 KST] [INFO ] [http-nio-8080-exec-1] c.a.p.b.service.BankServiceMemory:39 - BankFrontService/getAll/success -- 
+[JAEMIN] [2025-02-20 02:27:00 KST] [INFO ] [main] com.account.pro.ProApplication:53 - Starting ProApplication using Java 21.0.2 with PID 15276 (C:\gitRepository\Bankend\bankAccount\build\classes\java\main started by eheh4 in C:\gitRepository\Bankend\bankAccount) -- 
+[JAEMIN] [2025-02-20 02:27:00 KST] [INFO ] [main] com.account.pro.ProApplication:652 - No active profile set, falling back to 1 default profile: "default" -- 
+[JAEMIN] [2025-02-20 02:27:38 KST] [INFO ] [main] com.account.pro.ProApplication:53 - Starting ProApplication using Java 21.0.2 with PID 29332 (C:\gitRepository\Bankend\bankAccount\build\classes\java\main started by eheh4 in C:\gitRepository\Bankend\bankAccount) -- 
+[JAEMIN] [2025-02-20 02:27:38 KST] [INFO ] [main] com.account.pro.ProApplication:652 - No active profile set, falling back to 1 default profile: "default" -- 
+[JAEMIN] [2025-02-20 02:27:46 KST] [INFO ] [main] com.account.pro.ProApplication:59 - Started ProApplication in 8.501 seconds (process running for 9.523) -- 
+[JAEMIN] [2025-02-20 02:27:51 KST] [INFO ] [http-nio-8080-exec-2] c.a.p.b.service.BankServiceMemory:39 - BankFrontService/getAll/success -- 
+[JAEMIN] [2025-02-20 02:27:57 KST] [INFO ] [http-nio-8080-exec-3] c.a.p.b.service.BankServiceMemory:39 - BankFrontService/getAll/success -- 

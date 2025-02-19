@@ -1,4 +1,4 @@
-package com.account.pro.bankService.exception;
+package com.account.pro.exception;
 
 import com.account.pro.bankService.service.response.RestError;
 import org.springframework.http.HttpStatus;

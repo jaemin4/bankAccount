@@ -1,8 +1,8 @@
 package com.account.pro.bankService.repository;
 
-import com.account.pro.bankService.exception.BankRuntimeException;
 import com.account.pro.bankService.repository.entity.Account;
 import com.account.pro.bankService.repository.entity.BankAccount;
+import com.account.pro.exception.BankRuntimeException;
 import com.account.pro.bankService.memory.BankAccountMemory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;

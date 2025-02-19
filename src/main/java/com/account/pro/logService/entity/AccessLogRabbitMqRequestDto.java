@@ -1,6 +1,5 @@
-package com.account.pro.logService.repository.entity;
+package com.account.pro.logService.entity;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,74 +10,31 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(
-        name = "T_ACCESS_LOG"
-)
-public class AccessLogEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class AccessLogRabbitMqRequestDto {
     private Long AccessLogId;
-
-    @Column(length = 20)
     private String method;
-
-    @Column(length = 200)
     private String uri;
-
-    @Column(length = 2000)
     private String queryString;
-
-    @Column(length = 2000)
     private String queryParams;
-
-    @Column(length = 2000)
     private String requestBody;
-
-    @Column(length = 2000)
     private String headers;
-
-    @Column(length = 200)
     private String userAgent;
-
-    @Column(length = 200)
     private String referer;
-
-    @Column(length = 50)
     private String clientIp;
-
-    @Column(length = 200)
     private String host;
-
-    @Column(length = 255)
     private String authorization;
-
-    @Column
     private LocalDateTime requestAt;
-
-    @Column
     private String threadId;
-
-    @Column
     private LocalDateTime responseAt;
-
-    @Column(length = 2000)
     private String responseBody;
-
-    @Column(length = 20)
     private String status;
-
-    @Column
     private Integer statusCode;
-
-    @Column
     private Long elapsed;
 
-
-    public AccessLogEntity(String method, String uri, String queryString, String queryParams, String requestBody,
-                           String headers, String userAgent, String referer, String clientIp, String host,
-                           String authorization, LocalDateTime requestAt, String threadId, LocalDateTime responseAt,
-                           String responseBody, String status, Integer statusCode, Long elapsed) {
+    public AccessLogRabbitMqRequestDto(String method, String uri, String queryString, String queryParams, String requestBody,
+                                       String headers, String userAgent, String referer, String clientIp, String host,
+                                       String authorization, LocalDateTime requestAt, String threadId, LocalDateTime responseAt,
+                                       String responseBody, String status, Integer statusCode, Long elapsed) {
         this.method = method;
         this.uri = uri;
         this.queryString = queryString;

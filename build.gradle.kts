@@ -33,6 +33,10 @@ dependencies {
 	implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.0")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	runtimeOnly ("com.mysql:mysql-connector-j")
+	implementation ("org.springframework.boot:spring-boot-starter-amqp")
+
+
+
 
 }
 
