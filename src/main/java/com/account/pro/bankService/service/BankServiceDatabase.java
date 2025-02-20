@@ -19,6 +19,12 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 
+// todo 실제로 Controller 통해서 테스트가 될수 있도록 연결해서 한번 해보세요.
+// todo 아래 각 메소드의 로그상에서 balance 가 변하는 것을 확인할 수 있도록 로그를 추가해주세요. 로그만 보더라도 어떤 유저의 밸런스가 어떻게 변해가는지를 확인할 수 있으면 좋겠습니다.
+//  예) success deposit balance: 1000 -> 2000
+//  예) success withdrawal balance: 2000 -> 1000
+//  기타 다른곳에 필요해 보이는 곳에도 추가로 해보면 좋겠습니다.
+// todo 밸런스 히스토리를 남길수 있도록 BalanceLog 테이블을 만들어 주세요. 즉 거래내역을 남기는 일입니다.
 @Slf4j
 @Service
 @RequiredArgsConstructor
