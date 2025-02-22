@@ -33,6 +33,7 @@ public class AccessLogEntity {
     @Column(length = 2000)
     private String queryParams;
 
+    // todo 사이즈가 2000 을 넘어가면 저장이 실패가 됩니다. 어떤 전략들이 가능할까요 ?
     @Column(length = 2000)
     private String requestBody;
 

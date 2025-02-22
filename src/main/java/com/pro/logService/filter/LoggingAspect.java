@@ -35,6 +35,8 @@ public class LoggingAspect {
         boolean isError = false;
         boolean isControllerLayer = "Controller".equals(layer);
 
+        // todo: MDC 는 쓰레드 로컬을 활용합니다. finally 에서 mdc 를 정리해주는 것이 반드시 필요합니다. 안그러면 메모리 누수가 발생합니다.
+
         try {
             // 🚀 최초 실행 시 MDC 값 설정
             if (MDC.get(TRACE_ID_KEY) == null) {

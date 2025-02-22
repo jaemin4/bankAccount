@@ -15,6 +15,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitmqConfig {
+
+    // todo: @ConfigurationProperties 를 활용해서 코드를 줄여봤으면 좋겠네요.
     @Value("${spring.rabbitmq.host}")
     private String host;
 
