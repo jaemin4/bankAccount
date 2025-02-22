@@ -6,8 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BankAccountSaveParam {
-    private Long accountNumber;
-    private int balance;
+    private double balance;
     private String name;
-    private Long id;
 }

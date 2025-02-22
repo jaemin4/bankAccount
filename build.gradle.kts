@@ -35,6 +35,9 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	runtimeOnly ("com.mysql:mysql-connector-j")
 	implementation ("org.springframework.boot:spring-boot-starter-amqp")
+	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4")
+
+
 
 
 

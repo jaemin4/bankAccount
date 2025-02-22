@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.ContentCachingRequestWrapper;
@@ -16,6 +17,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -29,9 +31,15 @@ public class AccessLogFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         ContentCachingRequestWrapper req = new ContentCachingRequestWrapper((HttpServletRequest) request);
         ContentCachingResponseWrapper res = new ContentCachingResponseWrapper((HttpServletResponse) response);
-
         LocalDateTime requestAt = LocalDateTime.now();
-        chain.doFilter(req,res);
+
+        try {
+            String traceId = UUID.randomUUID().toString();
+            MDC.put("traceId",traceId);
+            chain.doFilter(req,res);
+        }finally {
+            MDC.clear();
+        }
         LocalDateTime responseAt = LocalDateTime.now();
 
         AccessLogRabbitMqRequestDto accessLogRabbitMqRequestDto = new AccessLogRabbitMqRequestDto(
