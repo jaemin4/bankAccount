@@ -39,7 +39,7 @@ public class BankService {
         Map<String, Object> data = new LinkedHashMap<>();
         data.put("data", bankAccountRepository.getAll());
 
-        log.info("BankJpaService/getAll/success");
+        //log.info("BankJpaService/getAll/success");
         return new RestResult("조회 성공", "true", data);
     }
 
