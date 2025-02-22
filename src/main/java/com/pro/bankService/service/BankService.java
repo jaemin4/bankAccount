@@ -65,7 +65,7 @@ public class BankService {
                     accountEntity.getAccount_number(),
                     saveUserId));
 
-        log.info("BankJpaService/save/success");
+        //log.info("BankJpaService/save/success");
         return new RestResult("가입 성공", "true");
     }
 
@@ -91,7 +91,7 @@ public class BankService {
 
         accountRepository.updateAccountBalance(resultAccountFindById);
 
-        log.info("BankJpaService/deposit/success");
+        //log.info("BankJpaService/deposit/success");
         return new RestResult("입금 성공", "true");
     }
 
@@ -117,7 +117,7 @@ public class BankService {
         accountEntity.setBalance(accountEntity.getBalance() - param.getBalance());
         accountRepository.updateAccountBalance(accountEntity);
 
-        log.info("BankJpaService/withdraw/success");
+       // log.info("BankJpaService/withdraw/success");
         return new RestResult("출금 성공", "true");
     }
 
@@ -147,7 +147,7 @@ public class BankService {
         accountRepository.updateAccountBalance(fromAccountOpt);
         accountRepository.updateAccountBalance(toAccountOpt);
 
-        log.info("BankJpaService/transfer/success");
+        //log.info("BankJpaService/transfer/success");
         return new RestResult("이체 성공", "true");
     }
 }

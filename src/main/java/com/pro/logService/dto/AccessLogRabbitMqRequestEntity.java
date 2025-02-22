@@ -1,4 +1,4 @@
-package com.pro.logService.entity;
+package com.pro.logService.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccessLogRabbitMqRequestDto {
+public class AccessLogRabbitMqRequestEntity {
     private Long AccessLogId;
     private String method;
     private String uri;
@@ -31,10 +31,10 @@ public class AccessLogRabbitMqRequestDto {
     private Integer statusCode;
     private Long elapsed;
 
-    public AccessLogRabbitMqRequestDto(String method, String uri, String queryString, String queryParams, String requestBody,
-                                       String headers, String userAgent, String referer, String clientIp, String host,
-                                       String authorization, LocalDateTime requestAt, String threadId, LocalDateTime responseAt,
-                                       String responseBody, String status, Integer statusCode, Long elapsed) {
+    public AccessLogRabbitMqRequestEntity(String method, String uri, String queryString, String queryParams, String requestBody,
+                                          String headers, String userAgent, String referer, String clientIp, String host,
+                                          String authorization, LocalDateTime requestAt, String threadId, LocalDateTime responseAt,
+                                          String responseBody, String status, Integer statusCode, Long elapsed) {
         this.method = method;
         this.uri = uri;
         this.queryString = queryString;

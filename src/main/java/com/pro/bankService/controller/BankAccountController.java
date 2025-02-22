@@ -25,28 +25,28 @@ public class BankAccountController {
 
     @PostMapping("/save")
     public RestResult save(@RequestBody BankAccountSaveParam param){
-        log.info("/bank/save : {}", param);
+        //log.info("/bank/save : {}", param);
 
         return bankService.save(param);
     }
 
     @PostMapping("/deposit")
     public RestResult deposit(@RequestBody BankAccountDepositParam param){
-        log.info("/bank/save : {}", param);
+       // log.info("/bank/save : {}", param);
 
         return bankService.deposit(param);
     }
 
     @PostMapping("/withdraw")
     public RestResult withdraw(@RequestBody BankAccountWithdrawParam param){
-        log.info("/bank/withdraw : {}", param);
+       // log.info("/bank/withdraw : {}", param);
         RestResult result = new RestResult();
         return bankService.withdraw(param);
     }
 
     @PostMapping("/transfer")
     public RestResult transfer(@RequestBody BankAccountTransferParam param){
-        log.info("/bank/transfer : {}", param);
+       // log.info("/bank/transfer : {}", param);
         return bankService.transfer(param);
 
     }

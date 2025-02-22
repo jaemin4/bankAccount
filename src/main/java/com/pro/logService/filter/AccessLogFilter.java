@@ -1,6 +1,6 @@
 package com.pro.logService.filter;
 
-import com.pro.logService.entity.AccessLogRabbitMqRequestDto;
+import com.pro.logService.dto.AccessLogRabbitMqRequestEntity;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -33,16 +33,12 @@ public class AccessLogFilter implements Filter {
         ContentCachingResponseWrapper res = new ContentCachingResponseWrapper((HttpServletResponse) response);
         LocalDateTime requestAt = LocalDateTime.now();
 
-        try {
-            String traceId = UUID.randomUUID().toString();
-            MDC.put("traceId",traceId);
-            chain.doFilter(req,res);
-        }finally {
-            MDC.clear();
-        }
+
+        chain.doFilter(req,res);
+
         LocalDateTime responseAt = LocalDateTime.now();
 
-        AccessLogRabbitMqRequestDto accessLogRabbitMqRequestDto = new AccessLogRabbitMqRequestDto(
+        AccessLogRabbitMqRequestEntity accessLogRabbitMqRequestEntity = new AccessLogRabbitMqRequestEntity(
                 req.getMethod(),
                 req.getRequestURI(),
                 req.getQueryString(),
@@ -65,7 +61,7 @@ public class AccessLogFilter implements Filter {
                 Duration.between(requestAt, responseAt).toMillis()
         );
 
-        rabbitTemplate.convertAndSend("hello.exchange","hello.key",accessLogRabbitMqRequestDto);
+        rabbitTemplate.convertAndSend("hello.exchange","hello.key", accessLogRabbitMqRequestEntity);
 
         res.copyBodyToResponse();
 
