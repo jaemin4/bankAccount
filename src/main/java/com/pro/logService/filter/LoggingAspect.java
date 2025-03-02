@@ -29,7 +29,9 @@ public class LoggingAspect {
             "execution(* com.pro.bankService.repository..*(..))")
     public Object logExecutionLayer(ProceedingJoinPoint joinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
+
         String layer = getLayer(joinPoint.getSignature().getDeclaringTypeName());
+
         boolean isRepositoryLayer = "Repository".equals(layer);
         boolean isServiceLayer = "Service".equals(layer);
         boolean isError = false;
@@ -38,7 +40,6 @@ public class LoggingAspect {
         // todo: MDC 는 쓰레드 로컬을 활용합니다. finally 에서 mdc 를 정리해주는 것이 반드시 필요합니다. 안그러면 메모리 누수가 발생합니다.
 
         try {
-            // 🚀 최초 실행 시 MDC 값 설정
             if (MDC.get(TRACE_ID_KEY) == null) {
                 MDC.put(TRACE_ID_KEY, UUID.randomUUID().toString().substring(0, 8));
                 MDC.put(THREAD_ID_KEY, String.valueOf(Thread.currentThread().threadId()));
@@ -52,8 +53,6 @@ public class LoggingAspect {
             } else {
                 MDC.put(INDENTATION_KEY, indentation + "    ");
             }
-
-            addLayer(layer);
 
             if ("Controller".equals(layer)) {
                 String requestUrl = getRequestUrl();
@@ -105,12 +104,6 @@ public class LoggingAspect {
         if (className.contains("service")) return "Service";
         if (className.contains("repository")) return "Repository";
         return "Unknown";
-    }
-
-    private void addLayer(String layer) {
-        List<String> layers = getLayers();
-        layers.add(layer);
-        MDC.put(LAYER_KEY, String.join(" -> ", layers));
     }
 
     private void removeLastLayer() {

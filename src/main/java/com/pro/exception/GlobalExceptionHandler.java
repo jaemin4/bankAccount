@@ -8,11 +8,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-// todo 알아보기.
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    // if
+
     @ExceptionHandler(BankRuntimeException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST) // 400
     public RestError handleBankRuntimeException(BankRuntimeException e) {
@@ -37,7 +36,6 @@ public class GlobalExceptionHandler {
         return new RestError("method_not_allowed", e.getMessage());
     }
 
-    // else
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR) // 500
     public RestError handleBankRuntimeException(Exception e) {

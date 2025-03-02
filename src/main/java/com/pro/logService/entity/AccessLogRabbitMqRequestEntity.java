@@ -1,4 +1,4 @@
-package com.pro.logService.dto;
+package com.pro.logService.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

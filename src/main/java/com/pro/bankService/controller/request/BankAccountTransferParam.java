@@ -8,6 +8,6 @@ import lombok.Setter;
 public class BankAccountTransferParam {
     private Long toAccountNumber;
     private Long fromAccountNumber;
-    private double balance;
+    private Long balance;
 
 }

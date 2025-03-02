@@ -12,11 +12,9 @@ import lombok.Setter;
 public class AccountEntity {
 
     private Long account_number;
-    private double balance;
+    private Long balance;
 
-    public AccountEntity(double balance) {
-        this.balance = balance;
-    }
+
     public AccountEntity(Long account_number) {
         this.account_number = account_number;
     }

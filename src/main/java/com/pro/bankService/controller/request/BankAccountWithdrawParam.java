@@ -7,6 +7,6 @@ import lombok.Setter;
 @Setter
 public class BankAccountWithdrawParam {
     private Long account_number;
-    private double balance;
+    private Long balance;
 
 }
