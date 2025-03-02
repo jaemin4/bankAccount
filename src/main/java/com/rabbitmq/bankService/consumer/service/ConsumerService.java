@@ -31,6 +31,9 @@ public class ConsumerService {
         log.info("bankaccount/consumer/consumerService 메세지: {}", accessLogEntity.toString());
         logBuffer.add(accessLogEntity);
 
+        // todo 사이즈가 15개 이상이면 저장하게되는데요. 만약에 14개 이하일 때 서버를 내리게 되면 버퍼에 들어가 있던게 어떻게 될까요 ?
+        //  그래서 Gracefully shutdown 로직을 구현해야 합니다.
+        //  shutdown 시에는 현재 버퍼에 있는 데이터를 모두 저장하고 종료해야 합니다.
         if(logBuffer.size() >= BATCH_SIZE){
             accessLogJdbcRepository.saveAll(logBuffer);
             logBuffer.clear();
