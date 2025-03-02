@@ -34,17 +34,23 @@ public class ConsumerService {
 
     @Transactional
     @RabbitListener(queues = "bank.queue1")
-    public void queueOneProccess(AccessLogEntity accessLogEntity) throws JsonProcessingException {
-        String fullMethodName = this.getClass().getSimpleName() + "." + new Object() {}.getClass().getEnclosingMethod().getName();
-        log.info("{} 메세지 : {}",fullMethodName, objectMapper.writeValueAsString(accessLogEntity));
-        listAccessLogEntity.add(accessLogEntity);
+    public void queueOneProccess(AccessLogEntity accessLogEntity) {
+        try {
+            String fullMethodName = this.getClass().getSimpleName() + "." + new Object() {}.getClass().getEnclosingMethod().getName();
+            log.info("{} 메세지 : {}",fullMethodName, objectMapper.writeValueAsString(accessLogEntity));
+            listAccessLogEntity.add(accessLogEntity);
 
-        if(listAccessLogEntity.size() >= BATCH_SIZE){
-            accessLogJdbcRepository.saveAll(listAccessLogEntity);
-            listAccessLogEntity.clear();
+            if(listAccessLogEntity.size() >= BATCH_SIZE){
+                accessLogJdbcRepository.saveAll(listAccessLogEntity);
+                listAccessLogEntity.clear();
+            }
+            log.info("\n {} : save", fullMethodName);
+
+        } catch (JsonProcessingException e) {
+//            throw new RuntimeException(e);
+            // 예외를 처리해야한다.
+            log.error("에러 발생 : {}", e.getMessage());
         }
-
-        log.info("\n {} : save", fullMethodName);
 
     }
 
