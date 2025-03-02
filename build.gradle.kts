@@ -25,22 +25,21 @@ repositories {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
-	compileOnly("org.projectlombok:lombok")
-	annotationProcessor("org.projectlombok:lombok")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation ("com.fasterxml.jackson.core:jackson-databind:2.16.0")
 	implementation ("com.fasterxml.jackson.core:jackson-core:2.16.0")
 	implementation ("com.fasterxml.jackson.core:jackson-annotations:2.16.0")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	runtimeOnly ("com.mysql:mysql-connector-j")
 	implementation ("org.springframework.boot:spring-boot-starter-amqp")
 	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4")
 
+	runtimeOnly ("com.mysql:mysql-connector-j")
+	compileOnly("org.projectlombok:lombok")
+	annotationProcessor("org.projectlombok:lombok")
 
-
-
-
+	testImplementation("org.springframework.security:spring-security-test")
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
 }
 

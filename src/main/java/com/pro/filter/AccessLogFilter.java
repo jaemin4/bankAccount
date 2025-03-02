@@ -1,6 +1,7 @@
-package com.pro.logService.filter;
+package com.pro.filter;
 
-import com.pro.logService.entity.AccessLogRabbitMqRequestEntity;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pro.logService.AccessLogRabbitMqRequestEntity;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -24,6 +25,7 @@ import java.util.stream.Collectors;
 public class AccessLogFilter implements Filter {
 
     private final RabbitTemplate rabbitTemplate;
+    private final ObjectMapper objectMapper;
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -40,7 +42,7 @@ public class AccessLogFilter implements Filter {
                 req.getMethod(),
                 req.getRequestURI(),
                 req.getQueryString(),
-                req.getParameterMap().toString(),
+                objectMapper.writeValueAsString(req.getParameterMap()),
                 req.getReader().lines().reduce("", (acc, line) -> acc + line),
                 Collections.list(req.getHeaderNames()).stream()
                         .collect(Collectors.toMap(h -> h, req::getHeader))

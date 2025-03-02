@@ -1,6 +1,5 @@
 package com.pro.bankService.service;
 
-import ch.qos.logback.core.util.StringUtil;
 import com.pro.bankService.controller.request.BankAccountDepositParam;
 import com.pro.bankService.controller.request.BankAccountSaveParam;
 import com.pro.bankService.controller.request.BankAccountTransferParam;
@@ -11,10 +10,11 @@ import com.pro.bankService.repository.mybatis.UserRepository;
 import com.pro.bankService.repository.mybatis.entity.AccountEntity;
 import com.pro.bankService.repository.mybatis.entity.BankAccountEntity;
 import com.pro.bankService.repository.mybatis.entity.UserEntity;
-import com.pro.bankService.service.response.RestResult;
+import com.pro.response.RestResult;
 import com.pro.bankService.util.ServiceUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.LinkedHashMap;
@@ -35,7 +35,7 @@ public class BankService {
     private final BankAccountRepository bankAccountRepository;
     private final AccountRepository accountRepository;
     private final UserRepository userRepository;
-
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
     public RestResult getAll() {
         Map<String, Object> data = new LinkedHashMap<>();
         data.put("data", bankAccountRepository.getAll());
@@ -45,12 +45,19 @@ public class BankService {
 
     @Transactional
     public RestResult save(BankAccountSaveParam param) {
-        String saveUserId = ServiceUtil.createUserId();
+        if(param.getBalance() == null || param.getEmail() == null || param.getPassword() == null || param.getName() == null){
+            return new RestResult("회원가입 오류","false");
+        }
+
         String saveBankAccountId = ServiceUtil.createBankAccountId();
 
         userRepository.save(new UserEntity(
-                    saveUserId,
-                    param.getName()));
+              param.getUser_id(),
+              param.getName(),
+              param.getEmail(),
+              bCryptPasswordEncoder.encode(param.getPassword()),
+              param.getRole()
+        ));
 
         AccountEntity accountEntity = new AccountEntity(param.getBalance());
         accountRepository.save(accountEntity);
@@ -58,7 +65,7 @@ public class BankService {
         bankAccountRepository.save(new BankAccountEntity(
                     saveBankAccountId,
                     accountEntity.getAccount_number(),
-                    saveUserId));
+                    param.getUser_id()));
 
         return new RestResult("가입 성공", "true");
     }
@@ -162,7 +169,7 @@ public class BankService {
 
         log.info("      BalanceLog : {}", Objects.toString(balanceLog, "null"));
 
-        return new RestResult("입금 성공", "true");
+        return new RestResult("출금 성공", "true");
 
     }
 

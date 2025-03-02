@@ -1,4 +1,4 @@
-package com.pro.bankService.service.response;
+package com.pro.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

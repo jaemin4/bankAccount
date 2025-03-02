@@ -8,11 +8,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class UserEntity {
 
     private String user_id;
     private String name;
+    private String email;
+    private String password;
+    private String role;
 
     public UserEntity(String name) {
         this.name = name;

@@ -1,4 +1,4 @@
-package com.pro.logService.filter;
+package com.pro.logService;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;

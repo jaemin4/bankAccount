@@ -9,6 +9,8 @@ public interface UserRepository {
 
     Integer save(UserEntity userEntity);
 
+    UserEntity findByUsername(String username);
+
 
 
 }

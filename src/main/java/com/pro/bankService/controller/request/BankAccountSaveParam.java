@@ -8,4 +8,8 @@ import lombok.Setter;
 public class BankAccountSaveParam {
     private Long balance;
     private String name;
+    private String email;
+    private String password;
+    private String role;
+    private String user_id;
 }

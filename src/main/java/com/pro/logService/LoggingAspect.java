@@ -1,4 +1,4 @@
-package com.pro.logService.filter;
+package com.pro.logService;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;

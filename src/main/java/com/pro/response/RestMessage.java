@@ -1,4 +1,4 @@
-package com.pro.bankService.service.response;
+package com.pro.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
