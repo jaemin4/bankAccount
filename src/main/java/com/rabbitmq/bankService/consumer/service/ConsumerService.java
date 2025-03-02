@@ -3,7 +3,9 @@ package com.rabbitmq.bankService.consumer.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pro.bankService.service.BalanceLogParam;
 import com.rabbitmq.bankService.consumer.entity.AccessLogEntity;
+import com.rabbitmq.bankService.consumer.entity.BankBalanceLogEntity;
 import com.rabbitmq.bankService.consumer.repository.AccessLogEntityRepository;
 import com.rabbitmq.bankService.consumer.repository.AccessLogJdbcRepository;
 import jakarta.annotation.PreDestroy;
@@ -25,37 +27,45 @@ public class ConsumerService {
     private final AccessLogJdbcRepository accessLogJdbcRepository;
     private final ObjectMapper objectMapper;
 
-    private final List<AccessLogEntity> logBuffer = new ArrayList<>();
-    private static final int BATCH_SIZE = 15;
+    private static final Integer BATCH_SIZE = 15;
+    private final List<AccessLogEntity> listAccessLogEntity = new ArrayList<>();
+    private final List<BankBalanceLogEntity> listBankBalanceLogEntity = new ArrayList<>();
+
 
     @Transactional
-    @RabbitListener(queues = "hello.queue")
-    public void receiveLogData(AccessLogEntity accessLogEntity) throws JsonProcessingException {
-        log.info("bankaccount/consumer/consumerService 메세지: {}", objectMapper.writeValueAsString(accessLogEntity));
-        logBuffer.add(accessLogEntity);
+    @RabbitListener(queues = "bank.queue1")
+    public void queueOneProccess(AccessLogEntity accessLogEntity) throws JsonProcessingException {
+        String fullMethodName = this.getClass().getSimpleName() + "." + new Object() {}.getClass().getEnclosingMethod().getName();
+        log.info("{} 메세지 : {}",fullMethodName, objectMapper.writeValueAsString(accessLogEntity));
+        listAccessLogEntity.add(accessLogEntity);
 
-        // todo 사이즈가 15개 이상이면 저장하게되는데요. 만약에 14개 이하일 때 서버를 내리게 되면 버퍼에 들어가 있던게 어떻게 될까요 ?
-        //  그래서 Gracefully shutdown 로직을 구현해야 합니다.
-        //  shutdown 시에는 현재 버퍼에 있는 데이터를 모두 저장하고 종료해야 합니다.
-        if(logBuffer.size() >= BATCH_SIZE){
-            accessLogJdbcRepository.saveAll(logBuffer);
-            logBuffer.clear();
+        if(listAccessLogEntity.size() >= BATCH_SIZE){
+            accessLogJdbcRepository.saveAll(listAccessLogEntity);
+            listAccessLogEntity.clear();
         }
 
-        log.info("\n bankaccount/consumer/consumberService/receiveLogData : save");
+        log.info("\n {} : save", fullMethodName);
 
     }
+
+    @Transactional
+    @RabbitListener(queues = "bank.queue2")
+    public void queueTwoProccess(BalanceLogParam balanceLogParam) throws JsonProcessingException {
+        String fullMethodName = this.getClass().getSimpleName() + "." + new Object() {}.getClass().getEnclosingMethod().getName();
+        log.info("{} 메세지 : {}",fullMethodName,objectMapper.writeValueAsString(balanceLogParam));
+    }
+
 
 
     @PreDestroy
     public void onShutdown() {
         log.info("Graceful Shutdown 시작 - 버퍼 데이터 저장 중...");
 
-        if (!logBuffer.isEmpty()) {
+        if (!listAccessLogEntity.isEmpty()) {
             try {
-                accessLogJdbcRepository.saveAll(logBuffer);
+                accessLogJdbcRepository.saveAll(listAccessLogEntity);
                 log.info("Graceful Shutdown 버퍼 데이터 저장 성공");
-                logBuffer.clear();
+                listAccessLogEntity.clear();
             } catch (Exception e) {
                 log.error("Graceful Shutdown 중 데이터 저장 실패: {}", e.getMessage(), e);
             }
@@ -63,6 +73,9 @@ public class ConsumerService {
             log.info("Graceful Shutdown 완료 - 저장할 데이터 없음");
         }
     }
+
+
+
 
 
 

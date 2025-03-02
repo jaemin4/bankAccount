@@ -18,52 +18,30 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitmqConfig {
 
     private final RabbitMqProperties rabbitMqProperties;
-
-    /**
-     * 1. Exchange 구성
-     * "hello.exchange" 라는 이름으로 Direct Exchange 형태로 구성
-     *
-     * @return DirectExchange
-     */
-
     @Bean
     DirectExchange directExchange(){
-        return new DirectExchange("hello.exchange");
+        return new DirectExchange("bank.exchange");
     }
-
-    /**
-     * 2. 큐를 구성
-     * "hello.queue"라는 이름으로 큐를 구성
-     *
-     * @return Queue
-     */
 
     @Bean
-    Queue queue(){
-        return new Queue("hello.queue", false);
+    Queue queue1(){
+        return new Queue("bank.queue1", false);
     }
-
-
-    /**
-     * 3. 큐와 DirectExchange를 바인딩
-     * "hello.key"라는 이름으로 바인딩을 구성
-     *
-     * @param directExchange
-     * @param queue
-     * @return Binding
-     */
 
     @Bean
-    Binding binding(DirectExchange directExchange, Queue queue){
-        return BindingBuilder.bind(queue).to(directExchange).with("hello.key");
+    Queue queue2(){
+        return new Queue("bank.queue2",false);
     }
 
-    /**
-     * 4. RabbitMQ와의 연결을 위한 ConnectionFactory을 구성
-     * Application.properties의 RabbitMQ의 사용자 정보를 가져와서 RabbitMQ와의 연결에 필요한 ConnectionFactory를 구성
-     *
-     * @return ConnectionFactory
-     */
+    @Bean
+    Binding bindingQueue1(DirectExchange directExchange, Queue queue1){
+        return BindingBuilder.bind(queue1).to(directExchange).with("bank.key1");
+    }
+
+    @Bean
+    Binding bindingQueue2(DirectExchange directExchange, Queue queue2){
+        return BindingBuilder.bind(queue2).to(directExchange).with("bank.key2");
+    }
 
     @Bean
     ConnectionFactory connectionFactory(){
@@ -75,26 +53,10 @@ public class RabbitmqConfig {
         return connectionFactory;
     }
 
-    /**
-     * 5. 메시지를 전송하고 수신하기 위한 JSON 타입으로 메시지를 변경
-     * Jackson2JsonMessageConverter를 사용하여 메시지 변환을 수행 JSON 형식으로 메시지를 전송하고 수신할 수 있다.
-     *
-     * @return
-     */
-
     @Bean
     MessageConverter messageConverter(){
         return new Jackson2JsonMessageConverter();
     }
-
-
-    /**
-     * 6. 구성한 ConnectionFactory, MessageConverter를 통해 템플릿을 구성
-     *
-     * @param connectionFactory
-     * @param messageConverter
-     * @return
-     */
 
     @Bean
     RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory, MessageConverter messageConverter){
@@ -102,7 +64,4 @@ public class RabbitmqConfig {
         rabbitTemplate.setMessageConverter(messageConverter);
         return rabbitTemplate;
     }
-
-
-
 }

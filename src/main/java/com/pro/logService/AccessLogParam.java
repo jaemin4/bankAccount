@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccessLogRabbitMqRequestEntity {
+public class AccessLogParam {
     private Long AccessLogId;
     private String method;
     private String uri;
@@ -31,10 +31,10 @@ public class AccessLogRabbitMqRequestEntity {
     private Integer statusCode;
     private Long elapsed;
 
-    public AccessLogRabbitMqRequestEntity(String method, String uri, String queryString, String queryParams, String requestBody,
-                                          String headers, String userAgent, String referer, String clientIp, String host,
-                                          String authorization, LocalDateTime requestAt, String threadId, LocalDateTime responseAt,
-                                          String responseBody, String status, Integer statusCode, Long elapsed) {
+    public AccessLogParam(String method, String uri, String queryString, String queryParams, String requestBody,
+                          String headers, String userAgent, String referer, String clientIp, String host,
+                          String authorization, LocalDateTime requestAt, String threadId, LocalDateTime responseAt,
+                          String responseBody, String status, Integer statusCode, Long elapsed) {
         this.method = method;
         this.uri = uri;
         this.queryString = queryString;

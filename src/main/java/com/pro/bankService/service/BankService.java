@@ -1,5 +1,6 @@
 package com.pro.bankService.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pro.bankService.controller.request.BankAccountDepositParam;
 import com.pro.bankService.controller.request.BankAccountSaveParam;
 import com.pro.bankService.controller.request.BankAccountTransferParam;
@@ -14,6 +15,7 @@ import com.pro.response.RestResult;
 import com.pro.bankService.util.ServiceUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,6 +38,9 @@ public class BankService {
     private final AccountRepository accountRepository;
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final RabbitTemplate rabbitTemplate;
+    private final ObjectMapper objectMapper;
+
     public RestResult getAll() {
         Map<String, Object> data = new LinkedHashMap<>();
         data.put("data", bankAccountRepository.getAll());
@@ -77,7 +82,7 @@ public class BankService {
         if(param.getBalance() == null || param.getAccount_number() == null){
             return new RestResult("입금 실패 : 계좌 번호가 없습니다.", "false");
         }
-        BalanceLogEntity balanceLog = new BalanceLogEntity();
+        BalanceLogParam balanceLogParam = new BalanceLogParam();
 
     /*2.기존 계좌 정보 조회*/
         AccountEntity prevAccount = accountRepository.findById(new AccountEntity(
@@ -91,10 +96,10 @@ public class BankService {
     /*3.현재 실행 메서드 저장*/
         String fullMethodName = this.getClass().getSimpleName() + "." +
                 new Object() {}.getClass().getEnclosingMethod().getName();
-        balanceLog.setClassMethod(Map.of("currentMethod",fullMethodName));
+        balanceLogParam.setClassMethod(Map.of("currentMethod",fullMethodName));
 
     /*4.이전 계좌 데이터 저장 */
-        balanceLog.setPrevData(new LinkedHashMap<>(Map.of(
+        balanceLogParam.setPrevData(new LinkedHashMap<>(Map.of(
                 "account_number",prevAccount.getAccount_number(),
                 "balance", prevAccount.getBalance()
         )));
@@ -109,12 +114,13 @@ public class BankService {
         }
 
     /*7.업데이트된 계좌 데이터 저장*/
-        balanceLog.setCurrentData(new LinkedHashMap<>(Map.of(
+        balanceLogParam.setCurrentData(new LinkedHashMap<>(Map.of(
                 "account_number", updatedAccount.getAccount_number(),
                 "balance", updatedAccount.getBalance()
         )));
 
-        log.info("      BalanceLog : {}", Objects.toString(balanceLog, "null"));
+        log.info("      BalanceLog : {}", Objects.toString(balanceLogParam, "null"));
+        rabbitTemplate.convertAndSend("bank.exchange","bank.key2", balanceLogParam);
 
         return new RestResult("입금 성공", "true");
     }
@@ -126,7 +132,7 @@ public class BankService {
         if(param.getBalance() == null || param.getAccount_number() == null){
             return new RestResult("출금 실패 : 계좌 번호가 없습니다.", "false");
         }
-        BalanceLogEntity balanceLog = new BalanceLogEntity();
+        BalanceLogParam balanceLogParam = new BalanceLogParam();
 
     /*2.기존 계좌 정보 조회*/
         AccountEntity prevAccount = accountRepository.findById(new AccountEntity(
@@ -143,10 +149,10 @@ public class BankService {
     /*3.현재 실행 메서드 저장*/
         String fullMethodName = this.getClass().getSimpleName() + "." +
                 new Object() {}.getClass().getEnclosingMethod().getName();
-        balanceLog.setClassMethod(Map.of("currentMethod",fullMethodName));
+        balanceLogParam.setClassMethod(Map.of("currentMethod",fullMethodName));
 
     /*4.이전 계좌 데이터 저장 */
-        balanceLog.setPrevData(new LinkedHashMap<>(Map.of(
+        balanceLogParam.setPrevData(new LinkedHashMap<>(Map.of(
                 "account_number",prevAccount.getAccount_number(),
                 "balance", prevAccount.getBalance()
         )));
@@ -162,12 +168,13 @@ public class BankService {
         }
 
     /*7.업데이트된 계좌 데이터 저장*/
-        balanceLog.setCurrentData(new LinkedHashMap<>(Map.of(
+        balanceLogParam.setCurrentData(new LinkedHashMap<>(Map.of(
                 "account_number", updatedAccount.getAccount_number(),
                 "balance", updatedAccount.getBalance()
         )));
 
-        log.info("      BalanceLog : {}", Objects.toString(balanceLog, "null"));
+        log.info("      BalanceLog : {}", Objects.toString(balanceLogParam, "null"));
+        rabbitTemplate.convertAndSend("bank.exchange","bank.key2", balanceLogParam);
 
         return new RestResult("출금 성공", "true");
 
@@ -184,7 +191,7 @@ public class BankService {
             return new RestResult("이체 실패 : 이체 금액을 확인해주세요.", "false");
         }
 
-        BalanceLogEntity balanceLog = new BalanceLogEntity();
+        BalanceLogParam balanceLogParam = new BalanceLogParam();
 
     /*2. 기존 계좌 조회 */
         AccountEntity fromAccountResult = accountRepository.findById(
@@ -208,11 +215,11 @@ public class BankService {
     /*3.현재 실행 메서드 저장*/
         String fullMethodName = this.getClass().getSimpleName() + "." +
                 new Object() {}.getClass().getEnclosingMethod().getName();
-        balanceLog.setClassMethod(Map.of("currentMethod",fullMethodName));
+        balanceLogParam.setClassMethod(Map.of("currentMethod",fullMethodName));
 
 
     /*4.이전 계좌 데이터 저장 */
-        balanceLog.setPrevData(new LinkedHashMap<>(Map.of(
+        balanceLogParam.setPrevData(new LinkedHashMap<>(Map.of(
                 "from_account_number",fromAccountResult.getAccount_number(),
                 "from_balance",fromAccountResult.getBalance(),
                 "to_account_number",toAccountResult.getAccount_number(),
@@ -235,7 +242,7 @@ public class BankService {
         }
 
     /*7.업데이트된 계좌 데이터 저장*/
-        balanceLog.setCurrentData(new LinkedHashMap<>(Map.of(
+        balanceLogParam.setCurrentData(new LinkedHashMap<>(Map.of(
                 "from_account_number",uptFromAccountResult.getAccount_number(),
                 "from_balance",uptFromAccountResult.getBalance(),
                 "to_account_number",uptToAccountResult.getAccount_number(),
@@ -243,7 +250,9 @@ public class BankService {
         )));
 
 
-        log.info("      BalanceLog : {}", Objects.toString(balanceLog, "null"));
+        log.info("      BalanceLog : {}", Objects.toString(balanceLogParam, "null"));
+        rabbitTemplate.convertAndSend("bank.exchange","bank.key2", balanceLogParam);
+
         return new RestResult("이체 성공", "true");
     }
 }

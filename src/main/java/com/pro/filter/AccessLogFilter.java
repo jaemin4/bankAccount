@@ -1,7 +1,7 @@
 package com.pro.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pro.logService.AccessLogRabbitMqRequestEntity;
+import com.pro.logService.AccessLogParam;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -38,7 +38,7 @@ public class AccessLogFilter implements Filter {
 
         LocalDateTime responseAt = LocalDateTime.now();
 
-        AccessLogRabbitMqRequestEntity accessLogRabbitMqRequestEntity = new AccessLogRabbitMqRequestEntity(
+        AccessLogParam accessLogParam = new AccessLogParam(
                 req.getMethod(),
                 req.getRequestURI(),
                 req.getQueryString(),
@@ -61,7 +61,7 @@ public class AccessLogFilter implements Filter {
                 Duration.between(requestAt, responseAt).toMillis()
         );
 
-        rabbitTemplate.convertAndSend("hello.exchange","hello.key", accessLogRabbitMqRequestEntity);
+        rabbitTemplate.convertAndSend("bank.exchange","bank.key1", accessLogParam);
 
         res.copyBodyToResponse();
 
