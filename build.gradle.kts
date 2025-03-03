@@ -32,6 +32,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation ("org.springframework.boot:spring-boot-starter-amqp")
 	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4")
+	//implementation("org.springframework.session:spring-session-jdbc")
+
 
 	runtimeOnly ("com.mysql:mysql-connector-j")
 	compileOnly("org.projectlombok:lombok")

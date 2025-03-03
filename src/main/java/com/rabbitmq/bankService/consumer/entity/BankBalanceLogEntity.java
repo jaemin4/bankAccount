@@ -1,7 +1,5 @@
 package com.rabbitmq.bankService.consumer.entity;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,19 +20,19 @@ public class BankBalanceLogEntity {
 
     @Lob
     @Column(columnDefinition = "TEXT")
-    private String prevData;
+    private String prev_data;
 
     @Lob
     @Column(columnDefinition = "TEXT")
-    private String currentData;
+    private String current_data;
 
     @Lob
     @Column(columnDefinition = "TEXT")
-    private String classMethod;
-    public BankBalanceLogEntity(String prevData, String currentData, String classMethod) {
-        this.prevData = prevData;
-        this.currentData = currentData;
-        this.classMethod = classMethod;
+    private String class_method;
+    public BankBalanceLogEntity(String prev_data, String current_data, String class_method) {
+        this.prev_data = prev_data;
+        this.current_data = current_data;
+        this.class_method = class_method;
     }
 
 }

@@ -14,6 +14,11 @@ spring:
     username: jmhost
     password: jaemin171717
     driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-test-query: 'select 1'
+      connection-timeout: 10000 # 10 sec.
+      maximum-pool-size: 5
+      pool-name: jm-admin-pool
 
   #rabbitMQ
   main:

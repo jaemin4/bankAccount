@@ -1,6 +1,5 @@
 package com.pro.filter;
 
-
 import com.pro.securityAuth.CustomUserDetails;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -15,10 +14,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import java.io.IOException;
 
-
 @Slf4j
 public class LoginFilter extends UsernamePasswordAuthenticationFilter {
-
     private final AuthenticationManager authenticationManager;
 
     public LoginFilter(AuthenticationManager authenticationManager){

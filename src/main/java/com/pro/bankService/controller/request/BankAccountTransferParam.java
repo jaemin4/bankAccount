@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BankAccountTransferParam {
-    private Long toAccountNumber;
+    private Long to_account_number;
     private Long fromAccountNumber;
     private Long balance;
 

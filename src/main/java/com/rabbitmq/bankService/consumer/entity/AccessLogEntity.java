@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 public class AccessLogEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long AccessLogId;
+    private Long access_log_id;
 
     @Column(length = 20)
     private String method;
@@ -28,27 +28,27 @@ public class AccessLogEntity {
     private String uri;
 
     @Column(length = 2000)
-    private String queryString;
+    private String query_string;
 
     @Column(length = 2000)
-    private String queryParams;
+    private String query_param;
 
     @Lob
     @Column(columnDefinition = "TEXT")
-    private String requestBody;
+    private String request_body;
 
 
     @Column(length = 2000)
     private String headers;
 
     @Column(length = 200)
-    private String userAgent;
+    private String user_agent;
 
     @Column(length = 200)
     private String referer;
 
     @Column(length = 50)
-    private String clientIp;
+    private String client_ip;
 
     @Column(length = 200)
     private String host;
@@ -57,48 +57,48 @@ public class AccessLogEntity {
     private String authorization;
 
     @Column
-    private LocalDateTime requestAt;
+    private LocalDateTime request_at;
 
     @Column
-    private String threadId;
+    private String thread_id;
 
     @Column
-    private LocalDateTime responseAt;
+    private LocalDateTime response_at;
 
     @Column(length = 2000)
-    private String responseBody;
+    private String response_body;
 
     @Column(length = 20)
     private String status;
 
     @Column
-    private Integer statusCode;
+    private Integer status_code;
 
     @Column
     private Long elapsed;
 
 
-    public AccessLogEntity(String method, String uri, String queryString, String queryParams, String requestBody,
-                           String headers, String userAgent, String referer, String clientIp, String host,
-                           String authorization, LocalDateTime requestAt, String threadId, LocalDateTime responseAt,
-                           String responseBody, String status, Integer statusCode, Long elapsed) {
+    public AccessLogEntity(String method, String uri, String query_string, String query_param, String request_body,
+                           String headers, String user_agent, String referer, String client_ip, String host,
+                           String authorization, LocalDateTime request_at, String thread_id, LocalDateTime response_at,
+                           String response_body, String status, Integer status_code, Long elapsed) {
         this.method = method;
         this.uri = uri;
-        this.queryString = queryString;
-        this.queryParams = queryParams;
-        this.requestBody = requestBody;
+        this.query_string = query_string;
+        this.query_param = query_param;
+        this.request_body = request_body;
         this.headers = headers;
-        this.userAgent = userAgent;
+        this.user_agent = user_agent;
         this.referer = referer;
-        this.clientIp = clientIp;
+        this.client_ip = client_ip;
         this.host = host;
         this.authorization = authorization;
-        this.requestAt = requestAt;
-        this.threadId = threadId;
-        this.responseAt = responseAt;
-        this.responseBody = responseBody;
+        this.request_at = request_at;
+        this.thread_id = thread_id;
+        this.response_at = response_at;
+        this.response_body = response_body;
         this.status = status;
-        this.statusCode = statusCode;
+        this.status_code = status_code;
         this.elapsed = elapsed;
     }
 

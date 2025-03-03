@@ -25,22 +25,43 @@ public class RabbitmqConfig {
 
     @Bean
     Queue queue1(){
-        return new Queue("bank.queue1", false);
+        return new Queue("bank.log.access", false);
     }
 
     @Bean
     Queue queue2(){
-        return new Queue("bank.queue2",false);
+        return new Queue("bank.log.deposit",false);
     }
 
     @Bean
+    Queue queue3(){
+        return new Queue("bank.log.withdraw",false);
+    }
+
+    @Bean
+    Queue queue4(){
+        return new Queue("bank.log.transfer",false);
+    }
+
+
+    @Bean
     Binding bindingQueue1(DirectExchange directExchange, Queue queue1){
-        return BindingBuilder.bind(queue1).to(directExchange).with("bank.key1");
+        return BindingBuilder.bind(queue1).to(directExchange).with("bank.log.access");
     }
 
     @Bean
     Binding bindingQueue2(DirectExchange directExchange, Queue queue2){
-        return BindingBuilder.bind(queue2).to(directExchange).with("bank.key2");
+        return BindingBuilder.bind(queue2).to(directExchange).with("bank.log.deposit");
+    }
+
+    @Bean
+    Binding bindingQueue3(DirectExchange directExchange, Queue queue3){
+        return BindingBuilder.bind(queue3).to(directExchange).with("bank.log.withdraw");
+    }
+
+    @Bean
+    Binding bindingQueue4(DirectExchange directExchange, Queue queue4){
+        return BindingBuilder.bind(queue4).to(directExchange).with("bank.log.transfer");
     }
 
     @Bean

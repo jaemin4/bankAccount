@@ -61,7 +61,7 @@ public class AccessLogFilter implements Filter {
                 Duration.between(requestAt, responseAt).toMillis()
         );
 
-        rabbitTemplate.convertAndSend("bank.exchange","bank.key1", accessLogParam);
+        rabbitTemplate.convertAndSend("bank.exchange","bank.log.access", accessLogParam);
 
         res.copyBodyToResponse();
 

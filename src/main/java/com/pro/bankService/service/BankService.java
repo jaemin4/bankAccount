@@ -1,5 +1,6 @@
 package com.pro.bankService.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pro.bankService.controller.request.BankAccountDepositParam;
 import com.pro.bankService.controller.request.BankAccountSaveParam;
@@ -21,7 +22,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Objects;
 
 // todo 실제로 Controller 통해서 테스트가 될수 있도록 연결해서 한번 해보세요.
 // todo 아래 각 메소드의 로그상에서 balance 가 변하는 것을 확인할 수 있도록 로그를 추가해주세요. 로그만 보더라도 어떤 유저의 밸런스가 어떻게 변해가는지를 확인할 수 있으면 좋겠습니다.
@@ -119,8 +119,12 @@ public class BankService {
                 "balance", updatedAccount.getBalance()
         )));
 
-        log.info("      BalanceLog : {}", Objects.toString(balanceLogParam, "null"));
-        rabbitTemplate.convertAndSend("bank.exchange","bank.key2", balanceLogParam);
+        try {
+            log.info("     BalanceLog : {}", objectMapper.writeValueAsString(balanceLogParam));
+        }catch (JsonProcessingException e){
+            log.info("     [{}] : {}",fullMethodName,e.getMessage());
+        }
+        rabbitTemplate.convertAndSend("bank.exchange","bank.log.deposit", balanceLogParam);
 
         return new RestResult("입금 성공", "true");
     }
@@ -173,8 +177,12 @@ public class BankService {
                 "balance", updatedAccount.getBalance()
         )));
 
-        log.info("      BalanceLog : {}", Objects.toString(balanceLogParam, "null"));
-        rabbitTemplate.convertAndSend("bank.exchange","bank.key2", balanceLogParam);
+        try {
+            log.info("     BalanceLog : {}", objectMapper.writeValueAsString(balanceLogParam));
+        }catch (JsonProcessingException e){
+            log.info("     [{}] : {}",fullMethodName,e.getMessage());
+        }
+        rabbitTemplate.convertAndSend("bank.exchange","bank.log.withdraw", balanceLogParam);
 
         return new RestResult("출금 성공", "true");
 
@@ -184,7 +192,7 @@ public class BankService {
     public RestResult transfer(BankAccountTransferParam param) {
 
     /*1.요청 값 검증*/
-        if (param.getBalance() == null || param.getFromAccountNumber() == null || param.getToAccountNumber() == null) {
+        if (param.getBalance() == null || param.getFromAccountNumber() == null || param.getTo_account_number() == null) {
             return new RestResult("이체 실패 : 계좌 번호가 없습니다.", "false");
         }
         if (param.getBalance() <= 0) {
@@ -201,7 +209,7 @@ public class BankService {
 
         AccountEntity toAccountResult = accountRepository.findById(
                 new AccountEntity(
-                        param.getToAccountNumber(),
+                        param.getTo_account_number(),
                         param.getBalance()));
 
         if (fromAccountResult == null || toAccountResult == null) {
@@ -250,8 +258,12 @@ public class BankService {
         )));
 
 
-        log.info("      BalanceLog : {}", Objects.toString(balanceLogParam, "null"));
-        rabbitTemplate.convertAndSend("bank.exchange","bank.key2", balanceLogParam);
+        try {
+            log.info("     BalanceLog : {}", objectMapper.writeValueAsString(balanceLogParam));
+        }catch (JsonProcessingException e){
+            log.info("     [{}] : {}",fullMethodName,e.getMessage());
+        }
+        rabbitTemplate.convertAndSend("bank.exchange","bank.log.transfer", balanceLogParam);
 
         return new RestResult("이체 성공", "true");
     }

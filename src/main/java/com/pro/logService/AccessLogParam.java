@@ -11,48 +11,47 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AccessLogParam {
-    private Long AccessLogId;
+    private Long access_log_id;
     private String method;
     private String uri;
-    private String queryString;
-    private String queryParams;
-    private String requestBody;
+    private String query_string;
+    private String query_params;
+    private String request_body;
     private String headers;
-    private String userAgent;
+    private String user_agent;
     private String referer;
-    private String clientIp;
+    private String client_ip;
     private String host;
     private String authorization;
-    private LocalDateTime requestAt;
-    private String threadId;
-    private LocalDateTime responseAt;
-    private String responseBody;
+    private LocalDateTime request_at;
+    private String thread_id;
+    private LocalDateTime response_at;
+    private String response_body;
     private String status;
-    private Integer statusCode;
+    private Integer status_code;
     private Long elapsed;
 
-    public AccessLogParam(String method, String uri, String queryString, String queryParams, String requestBody,
-                          String headers, String userAgent, String referer, String clientIp, String host,
-                          String authorization, LocalDateTime requestAt, String threadId, LocalDateTime responseAt,
-                          String responseBody, String status, Integer statusCode, Long elapsed) {
+    public AccessLogParam(String method, String uri, String query_string, String query_params, String request_body,
+                          String headers, String user_agent, String referer, String client_ip, String host,
+                          String authorization, LocalDateTime request_at, String thread_id, LocalDateTime response_at,
+                          String response_body, String status, Integer status_code, Long elapsed) {
         this.method = method;
         this.uri = uri;
-        this.queryString = queryString;
-        this.queryParams = queryParams;
-        this.requestBody = requestBody;
+        this.query_string = query_string;
+        this.query_params = query_params;
+        this.request_body = request_body;
         this.headers = headers;
-        this.userAgent = userAgent;
+        this.user_agent = user_agent;
         this.referer = referer;
-        this.clientIp = clientIp;
+        this.client_ip = client_ip;
         this.host = host;
         this.authorization = authorization;
-        this.requestAt = requestAt;
-        this.threadId = threadId;
-        this.responseAt = responseAt;
-        this.responseBody = responseBody;
+        this.request_at = request_at;
+        this.thread_id = thread_id;
+        this.response_at = response_at;
+        this.response_body = response_body;
         this.status = status;
-        this.statusCode = statusCode;
+        this.status_code = status_code;
         this.elapsed = elapsed;
     }
-
 }
