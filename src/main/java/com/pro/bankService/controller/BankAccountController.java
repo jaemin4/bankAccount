@@ -6,7 +6,7 @@ import com.pro.bankService.controller.request.BankAccountTransferParam;
 import com.pro.bankService.controller.request.BankAccountWithdrawParam;
 import com.pro.bankService.service.BankService;
 import com.pro.response.RestResult;
-import com.pro.bankService.util.ServiceUtil;
+import com.pro.util.ServiceUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;

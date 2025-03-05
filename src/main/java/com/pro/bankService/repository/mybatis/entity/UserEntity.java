@@ -12,11 +12,16 @@ public class UserEntity {
 
     private String user_id;
     private String name;
+    private String role;
     private String email;
     private String password;
-    private String role;
+
 
     public UserEntity(String name) {
         this.name = name;
+    }
+    public UserEntity(String name, String role) {
+        this.name = name;
+        this.role = role;
     }
 }

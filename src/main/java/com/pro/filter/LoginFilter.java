@@ -1,6 +1,7 @@
 package com.pro.filter;
 
 import com.pro.securityAuth.CustomUserDetails;
+import com.pro.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -10,16 +11,21 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Iterator;
 
 @Slf4j
 public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     private final AuthenticationManager authenticationManager;
+    private final JwtUtil jwtUtil;
 
-    public LoginFilter(AuthenticationManager authenticationManager){
+    public LoginFilter(AuthenticationManager authenticationManager,JwtUtil jwtUtil){
         this.authenticationManager = authenticationManager;
+        this.jwtUtil = jwtUtil;
         setFilterProcessesUrl("/auth/login");
     }
     @Override
@@ -40,9 +46,17 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
                 customUserDetails.getUsername(), customUserDetails.getPassword(),
                 authResult.getAuthorities().iterator().next().getAuthority());
 
+        Collection<? extends GrantedAuthority> authorities = authResult.getAuthorities();
+        GrantedAuthority auth = authorities.iterator().next();
+
+        String jwtToken = jwtUtil.createJwt(
+                customUserDetails.getUsername(),
+                auth.getAuthority(),
+                jwtUtil.getExpiredMs());
+
         SecurityContextHolder.getContext().setAuthentication(authResult);
-
-
+        log.info("토큰 :  " + jwtToken);
+        response.addHeader("Authorization", "Bearer " + jwtToken);
     }
 
     @Override

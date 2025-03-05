@@ -13,7 +13,7 @@ import com.pro.bankService.repository.mybatis.entity.AccountEntity;
 import com.pro.bankService.repository.mybatis.entity.BankAccountEntity;
 import com.pro.bankService.repository.mybatis.entity.UserEntity;
 import com.pro.response.RestResult;
-import com.pro.bankService.util.ServiceUtil;
+import com.pro.util.ServiceUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -59,9 +59,9 @@ public class BankService {
         userRepository.save(new UserEntity(
               param.getUser_id(),
               param.getName(),
+              param.getRole(),
               param.getEmail(),
-              bCryptPasswordEncoder.encode(param.getPassword()),
-              param.getRole()
+              bCryptPasswordEncoder.encode(param.getPassword())
         ));
 
         AccountEntity accountEntity = new AccountEntity(param.getBalance());

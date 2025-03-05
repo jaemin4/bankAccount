@@ -34,6 +34,9 @@ dependencies {
 	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4")
 	//implementation("org.springframework.session:spring-session-jdbc")
 
+	implementation ("io.jsonwebtoken:jjwt-api:0.12.3")
+	implementation ("io.jsonwebtoken:jjwt-impl:0.12.3")
+	implementation ("io.jsonwebtoken:jjwt-jackson:0.12.3")
 
 	runtimeOnly ("com.mysql:mysql-connector-j")
 	compileOnly("org.projectlombok:lombok")

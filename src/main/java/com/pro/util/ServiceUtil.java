@@ -1,4 +1,4 @@
-package com.pro.bankService.util;
+package com.pro.util;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.AllArgsConstructor;

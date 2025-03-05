@@ -1,7 +1,9 @@
 package com.pro.config;
 
 
+import com.pro.filter.JwtFilter;
 import com.pro.filter.LoginFilter;
+import com.pro.util.JwtUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +16,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.logout.LogoutFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -22,6 +23,7 @@ import org.springframework.security.web.authentication.logout.LogoutFilter;
 public class SecurityConfig {
 
     private final AuthenticationConfiguration authenticationConfiguration;
+    private final JwtUtil jwtUtil;
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
@@ -45,10 +47,11 @@ public class SecurityConfig {
                 .requestMatchers("/user/**").hasRole("USER")
                 .anyRequest().authenticated() );
 
+        http.addFilterBefore(new JwtFilter(jwtUtil), LoginFilter.class);
+
         http.addFilterAt(new LoginFilter(
-                authenticationManager(authenticationConfiguration)), UsernamePasswordAuthenticationFilter.class);
-
-
+                authenticationManager(authenticationConfiguration), jwtUtil),
+                UsernamePasswordAuthenticationFilter.class);
 
         http.sessionManagement((session) -> session
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS));
