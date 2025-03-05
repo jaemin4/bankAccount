@@ -39,6 +39,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR) // 500
     public RestError handleBankRuntimeException(Exception e) {
+        // todo 500 에러가 발생하면 개발자가 제일 먼저 알아야 합니다.
+        //  텔레그램 BotFather 를 이용해서 메시지를 보낼수있습니다. 이부분 추가해보시면 좋겠습니다.
         return new RestError("exception", e.getMessage());
     }
 

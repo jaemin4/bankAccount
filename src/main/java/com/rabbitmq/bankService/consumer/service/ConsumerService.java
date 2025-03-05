@@ -31,6 +31,7 @@ public class ConsumerService {
     private final List<BankBalanceLogEntity> listBankLogTransfer = new ArrayList<>();
 
 
+    // todo 아래처럼 하면 큐 컨슈머가 1개가 아니라 여러개로 뜰 것 같습니다. 1개의 쓰레드로만 띄워야 합니다. concurrency = "1" 이 설정이 추가되어야할 것 같습니다. 한번 비교해가면서 확인 부탁해요.
     @RabbitListener(queues = "bank.log.access")
     public void queueAccessLog(AccessLogEntity accessLogEntity) {
 
