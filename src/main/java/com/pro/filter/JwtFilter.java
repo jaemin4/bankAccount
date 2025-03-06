@@ -1,6 +1,6 @@
 package com.pro.filter;
 
-import com.pro.bankService.repository.mybatis.entity.UserEntity;
+import com.pro.feature.bankService.repository.mybatis.entity.UserEntity;
 import com.pro.securityAuth.CustomUserDetails;
 import com.pro.util.JwtUtil;
 import jakarta.servlet.FilterChain;
@@ -51,8 +51,6 @@ public class JwtFilter extends OncePerRequestFilter {
         );
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
-
         filterChain.doFilter(request, response);
-
     }
 }

@@ -1,7 +1,7 @@
 package com.pro.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pro.logService.AccessLogParam;
+import com.pro.feature.logService.AccessLogParam;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

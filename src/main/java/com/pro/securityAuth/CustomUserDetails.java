@@ -1,6 +1,6 @@
 package com.pro.securityAuth;
 
-import com.pro.bankService.repository.mybatis.entity.UserEntity;
+import com.pro.feature.bankService.repository.mybatis.entity.UserEntity;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

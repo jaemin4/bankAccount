@@ -1,8 +1,8 @@
 package com.pro.securityAuth;
 
 
-import com.pro.bankService.repository.mybatis.UserRepository;
-import com.pro.bankService.repository.mybatis.entity.UserEntity;
+import com.pro.feature.bankService.repository.mybatis.UserRepository;
+import com.pro.feature.bankService.repository.mybatis.entity.UserEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;

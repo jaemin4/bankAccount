@@ -1,7 +1,7 @@
 package com.rabbitmq.bankService.consumer.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pro.bankService.service.BalanceLogParam;
+import com.pro.feature.bankService.service.BalanceLogParam;
 import com.rabbitmq.bankService.consumer.entity.AccessLogEntity;
 import com.rabbitmq.bankService.consumer.entity.BankBalanceLogEntity;
 import com.rabbitmq.bankService.consumer.repository.AccessLogJdbcRepository;
@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 import java.util.*;
 @Slf4j
 @Service

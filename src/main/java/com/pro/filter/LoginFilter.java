@@ -42,8 +42,8 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
         CustomUserDetails customUserDetails = (CustomUserDetails) authResult.getPrincipal();
 
-        log.info("아이디 : {} , 비밀번호 : {} , 권한 : {}",
-                customUserDetails.getUsername(), customUserDetails.getPassword(),
+        log.info("아이디 : {}, 권한 : {}",
+                customUserDetails.getUsername(),
                 authResult.getAuthorities().iterator().next().getAuthority());
 
         Collection<? extends GrantedAuthority> authorities = authResult.getAuthorities();
@@ -55,7 +55,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
                 jwtUtil.getExpiredMs());
 
         SecurityContextHolder.getContext().setAuthentication(authResult);
-        log.info("토큰 :  " + jwtToken);
+        log.info("JWT :  " + jwtToken);
         response.addHeader("Authorization", "Bearer " + jwtToken);
     }
 
