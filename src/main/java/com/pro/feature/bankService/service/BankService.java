@@ -23,12 +23,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-// todo 실제로 Controller 통해서 테스트가 될수 있도록 연결해서 한번 해보세요.
-// todo 아래 각 메소드의 로그상에서 balance 가 변하는 것을 확인할 수 있도록 로그를 추가해주세요. 로그만 보더라도 어떤 유저의 밸런스가 어떻게 변해가는지를 확인할 수 있으면 좋겠습니다.
-//  예) success deposit balance: 1000 -> 2000
-//  예) success withdrawal balance: 2000 -> 1000
-//  기타 다른곳에 필요해 보이는 곳에도 추가로 해보면 좋겠습니다.
-// todo 밸런스 히스토리를 남길수 있도록 BalanceLog 테이블을 만들어 주세요. 즉 거래내역을 남기는 일입니다.
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -77,14 +71,11 @@ public class BankService {
 
     @Transactional
     public RestResult deposit(BankAccountDepositParam param) {
-
-    /*1.요청 값 검증*/
         if(param.getBalance() == null || param.getAccount_number() == null){
             return new RestResult("입금 실패 : 계좌 번호가 없습니다.", "false");
         }
         BalanceLogParam balanceLogParam = new BalanceLogParam();
 
-    /*2.기존 계좌 정보 조회*/
         AccountEntity prevAccount = accountRepository.findById(new AccountEntity(
                 param.getAccount_number(),param.getBalance()
         ));
@@ -93,34 +84,29 @@ public class BankService {
         }
 
 
-    /*3.현재 실행 메서드 저장*/
         String fullMethodName = this.getClass().getSimpleName() + "." +
                 new Object() {}.getClass().getEnclosingMethod().getName();
         balanceLogParam.setClassMethod(Map.of("currentMethod",fullMethodName));
 
-    /*4.이전 계좌 데이터 저장 */
         balanceLogParam.setPrevData(new LinkedHashMap<>(Map.of(
                 "account_number",prevAccount.getAccount_number(),
                 "balance", prevAccount.getBalance()
         )));
-    /*5.잔액 업데이트*/
         prevAccount.setBalance(prevAccount.getBalance() + param.getBalance());
         accountRepository.updateAccountBalance(prevAccount);
 
-    /*6.업데이트된 계좌 정보 조회 */
         AccountEntity updatedAccount = accountRepository.findById(new AccountEntity(param.getAccount_number()));
         if(updatedAccount == null){
             throw new IllegalStateException("알 수 없는 오류: 업데이트된 계좌 정보를 찾을 수 없습니다.");
         }
 
-    /*7.업데이트된 계좌 데이터 저장*/
         balanceLogParam.setCurrentData(new LinkedHashMap<>(Map.of(
                 "account_number", updatedAccount.getAccount_number(),
                 "balance", updatedAccount.getBalance()
         )));
 
         try {
-            log.info("     BalanceLog : {}", objectMapper.writeValueAsString(balanceLogParam));
+            log.info("              BalanceLog : {}", objectMapper.writeValueAsString(balanceLogParam));
         }catch (JsonProcessingException e){
             log.info("     [{}] : {}",fullMethodName,e.getMessage());
         }
@@ -132,13 +118,11 @@ public class BankService {
     @Transactional
     public RestResult withdraw(BankAccountWithdrawParam param) {
 
-    /*1.요청 값 검증*/
         if(param.getBalance() == null || param.getAccount_number() == null){
             return new RestResult("출금 실패 : 계좌 번호가 없습니다.", "false");
         }
         BalanceLogParam balanceLogParam = new BalanceLogParam();
 
-    /*2.기존 계좌 정보 조회*/
         AccountEntity prevAccount = accountRepository.findById(new AccountEntity(
                 param.getAccount_number(),param.getBalance()
         ));
@@ -150,28 +134,23 @@ public class BankService {
             return new RestResult("출금 실패: 잔액 부족", "false");
         }
 
-    /*3.현재 실행 메서드 저장*/
         String fullMethodName = this.getClass().getSimpleName() + "." +
                 new Object() {}.getClass().getEnclosingMethod().getName();
         balanceLogParam.setClassMethod(Map.of("currentMethod",fullMethodName));
 
-    /*4.이전 계좌 데이터 저장 */
         balanceLogParam.setPrevData(new LinkedHashMap<>(Map.of(
                 "account_number",prevAccount.getAccount_number(),
                 "balance", prevAccount.getBalance()
         )));
 
-    /*5.잔액 업데이트*/
         prevAccount.setBalance(prevAccount.getBalance() - param.getBalance());
         accountRepository.updateAccountBalance(prevAccount);
 
-    /*6.업데이트된 계좌 정보 조회 */
         AccountEntity updatedAccount = accountRepository.findById(new AccountEntity(param.getAccount_number()));
         if(updatedAccount == null){
             throw new IllegalStateException("알 수 없는 오류: 업데이트된 계좌 정보를 찾을 수 없습니다.");
         }
 
-    /*7.업데이트된 계좌 데이터 저장*/
         balanceLogParam.setCurrentData(new LinkedHashMap<>(Map.of(
                 "account_number", updatedAccount.getAccount_number(),
                 "balance", updatedAccount.getBalance()
@@ -190,8 +169,6 @@ public class BankService {
 
     @Transactional
     public RestResult transfer(BankAccountTransferParam param) {
-
-    /*1.요청 값 검증*/
         if (param.getBalance() == null || param.getFromAccountNumber() == null || param.getTo_account_number() == null) {
             return new RestResult("이체 실패 : 계좌 번호가 없습니다.", "false");
         }
@@ -201,7 +178,6 @@ public class BankService {
 
         BalanceLogParam balanceLogParam = new BalanceLogParam();
 
-    /*2. 기존 계좌 조회 */
         AccountEntity fromAccountResult = accountRepository.findById(
                 new AccountEntity(
                         param.getFromAccountNumber(),
@@ -220,13 +196,11 @@ public class BankService {
             return new RestResult("이체 실패: 잔액 부족", "false");
         }
 
-    /*3.현재 실행 메서드 저장*/
         String fullMethodName = this.getClass().getSimpleName() + "." +
                 new Object() {}.getClass().getEnclosingMethod().getName();
         balanceLogParam.setClassMethod(Map.of("currentMethod",fullMethodName));
 
 
-    /*4.이전 계좌 데이터 저장 */
         balanceLogParam.setPrevData(new LinkedHashMap<>(Map.of(
                 "from_account_number",fromAccountResult.getAccount_number(),
                 "from_balance",fromAccountResult.getBalance(),
@@ -234,14 +208,12 @@ public class BankService {
                 "to_balance", toAccountResult.getBalance()
         )));
 
-    /*5. 잔액 업데이트 */
         fromAccountResult.setBalance(fromAccountResult.getBalance() - param.getBalance());
         toAccountResult.setBalance(toAccountResult.getBalance() + param.getBalance());
 
         accountRepository.updateAccountBalance(fromAccountResult);
         accountRepository.updateAccountBalance(toAccountResult);
 
-    /*6.업데이트된 계좌 정보 조회 */
         AccountEntity uptFromAccountResult = accountRepository.findById(fromAccountResult);
         AccountEntity uptToAccountResult = accountRepository.findById(toAccountResult);
 
@@ -249,7 +221,6 @@ public class BankService {
             throw new IllegalStateException("알 수 없는 오류: 업데이트된 계좌 정보를 찾을 수 없습니다.");
         }
 
-    /*7.업데이트된 계좌 데이터 저장*/
         balanceLogParam.setCurrentData(new LinkedHashMap<>(Map.of(
                 "from_account_number",uptFromAccountResult.getAccount_number(),
                 "from_balance",uptFromAccountResult.getBalance(),
@@ -257,14 +228,12 @@ public class BankService {
                 "to_balance", uptToAccountResult.getBalance()
         )));
 
-
         try {
             log.info("     BalanceLog : {}", objectMapper.writeValueAsString(balanceLogParam));
         }catch (JsonProcessingException e){
             log.info("     [{}] : {}",fullMethodName,e.getMessage());
         }
         rabbitTemplate.convertAndSend("bank.exchange","bank.log.transfer", balanceLogParam);
-
         return new RestResult("이체 성공", "true");
     }
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pro.securityAuth.RefreshTokenRepository">
+
+    <select id="existRefresh" resultType="boolean">
+        SELECT COUNT(*) > 0 FROM t_auth_refresh WHERE refresh = #{refresh}
+    </select>
+
+    <delete id="deleteByRefresh">
+        DELETE FROM t_auth_refresh WHERE REFRESH = #{refresh}
+    </delete>
+
+    <insert id="saveRefresh" parameterType="com.pro.securityAuth.RefreshEntity">
+        insert into t_auth_refresh (email,refresh,expiration)
+        values (#{email},#{refresh},#{expiration})
+    </insert>
+
+
+</mapper>

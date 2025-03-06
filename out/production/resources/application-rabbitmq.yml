@@ -1,0 +1,43 @@
+server:
+  port: 3030
+
+spring:
+  config:
+    activate:
+      on-profile: rabbitmq
+
+  rabbitmq:
+    rabbitmq:
+      host: localhost
+      port: 5672
+      username: jaemin
+      password: jaemin
+
+  web:
+    resources:
+      add-mappings: false
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/bank_account?rewriteBatchedStatements=true
+    username: root
+    password: 12345
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update  # DB 스키마 자동 업데이트
+    show-sql: true  # 실행되는 SQL을 콘솔에 출력
+    properties:
+      hibernate:
+        order_inserts: true
+        order_updates: true
+        show_sql: true
+        id:
+          new_generator_mappings: false
+
+
+    database-platform: org.hibernate.dialect.MySQL8Dialect  # MySQL 8 Dialect 사용
+
+
+  mvc:
+    throw-exception-if-no-handler-found: true

@@ -1,31 +1,33 @@
 package com.pro.filter;
 
-import com.pro.securityAuth.CustomUserDetails;
+import com.pro.securityAuth.RefreshTokenRepository;
+import com.pro.securityAuth.RefreshEntity;
 import com.pro.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.Date;
 
 @Slf4j
-public class LoginFilter extends UsernamePasswordAuthenticationFilter {
+public class SecurityLoginFilter extends UsernamePasswordAuthenticationFilter {
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
+    private final RefreshTokenRepository refreshTokenRepository;
 
-    public LoginFilter(AuthenticationManager authenticationManager,JwtUtil jwtUtil){
+    public SecurityLoginFilter(AuthenticationManager authenticationManager, JwtUtil jwtUtil, RefreshTokenRepository refreshTokenRepository){
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
+        this.refreshTokenRepository = refreshTokenRepository;
         setFilterProcessesUrl("/auth/login");
     }
     @Override
@@ -40,28 +42,32 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        CustomUserDetails customUserDetails = (CustomUserDetails) authResult.getPrincipal();
+        String username = authResult.getName();
+        String role = authResult.getAuthorities().iterator().next().getAuthority();
 
-        log.info("아이디 : {}, 권한 : {}",
-                customUserDetails.getUsername(),
-                authResult.getAuthorities().iterator().next().getAuthority());
-
-        Collection<? extends GrantedAuthority> authorities = authResult.getAuthorities();
-        GrantedAuthority auth = authorities.iterator().next();
-
-        String jwtToken = jwtUtil.createJwt(
-                customUserDetails.getUsername(),
-                auth.getAuthority(),
-                jwtUtil.getExpiredMs());
+        String accessToken = jwtUtil.createJwt("access", username, role, jwtUtil.getAccessExpiredMs());
+        String refreshToken = jwtUtil.createJwt("refresh", username, role, jwtUtil.getRefreshExpiredMs());
 
         SecurityContextHolder.getContext().setAuthentication(authResult);
-        log.info("JWT :  " + jwtToken);
-        response.addHeader("Authorization", "Bearer " + jwtToken);
+        log.info("JWT :  " + accessToken);
+
+        RefreshEntity refreshEntity = new RefreshEntity(
+                username,
+                refreshToken,
+                new Date(System.currentTimeMillis() + jwtUtil.getRefreshExpiredMs()).toString()
+        );
+        refreshTokenRepository.saveRefresh(refreshEntity);
+
+        response.setHeader("access", accessToken);
+        response.addCookie(jwtUtil.createCookie(refreshToken));
+        response.setStatus(HttpStatus.OK.value());
     }
 
     @Override
     protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
         super.unsuccessfulAuthentication(request, response, failed);
     }
+
+
 
 }
