@@ -1,4 +1,4 @@
-package com.pro.bankService.repository.mybatis.entity;
+package com.pro.feature.bankService.repository.mybatis.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

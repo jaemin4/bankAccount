@@ -1,6 +1,6 @@
-package com.pro.bankService.repository.mybatis;
+package com.pro.feature.bankService.repository.mybatis;
 
-import com.pro.bankService.repository.mybatis.entity.UserEntity;
+import com.pro.feature.bankService.repository.mybatis.entity.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
