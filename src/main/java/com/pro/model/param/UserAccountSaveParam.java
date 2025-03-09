@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class BankAccountSaveParam {
+public class UserAccountSaveParam {
     private Long balance;
     private String name;
     private String email;

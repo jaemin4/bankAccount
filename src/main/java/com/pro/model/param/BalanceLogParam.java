@@ -13,8 +13,8 @@ import java.util.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BalanceLogParam {
-    private Map<String, Object> prevData;
-    private Map<String, Object> currentData;
+    private Map<String, Object> savedAccount;
+    private Map<String, Object> updatedAccount;
     private Map<String, Object> classMethod;
 
 

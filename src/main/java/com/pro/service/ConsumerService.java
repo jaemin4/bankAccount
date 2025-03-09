@@ -62,8 +62,8 @@ public class ConsumerService {
             log.info("{} 메세지 : {}", fullMethodName, objectMapper.writeValueAsString(param));
 
             BankBalanceLogEntity balanceLogEntity = new BankBalanceLogEntity(
-                    objectMapper.writeValueAsString(param.getPrevData()),
-                    objectMapper.writeValueAsString(param.getCurrentData()),
+                    objectMapper.writeValueAsString(param.getSavedAccount()),
+                    objectMapper.writeValueAsString(param.getUpdatedAccount()),
                     objectMapper.writeValueAsString(param.getClassMethod())
             );
 
@@ -86,8 +86,8 @@ public class ConsumerService {
             log.info("{} 메세지 : {}", fullMethodName, objectMapper.writeValueAsString(param));
 
             BankBalanceLogEntity balanceLogEntity = new BankBalanceLogEntity(
-                    objectMapper.writeValueAsString(param.getPrevData()),
-                    objectMapper.writeValueAsString(param.getCurrentData()),
+                    objectMapper.writeValueAsString(param.getSavedAccount()),
+                    objectMapper.writeValueAsString(param.getUpdatedAccount()),
                     objectMapper.writeValueAsString(param.getClassMethod())
             );
 
@@ -111,8 +111,8 @@ public class ConsumerService {
             log.info("{} 메세지 : {}", fullMethodName, objectMapper.writeValueAsString(param));
 
             BankBalanceLogEntity balanceLogEntity = new BankBalanceLogEntity(
-                    objectMapper.writeValueAsString(param.getPrevData()),
-                    objectMapper.writeValueAsString(param.getCurrentData()),
+                    objectMapper.writeValueAsString(param.getSavedAccount()),
+                    objectMapper.writeValueAsString(param.getUpdatedAccount()),
                     objectMapper.writeValueAsString(param.getClassMethod())
             );
 

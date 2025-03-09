@@ -1,33 +1,40 @@
 package com.pro.util;
 
 import com.pro.exception.BankRuntimeException;
+import com.pro.exception.UserRuntimeException;
+import com.pro.model.param.BankAccountDepositParam;
 import com.pro.model.param.BankAccountTransferParam;
 import com.pro.model.param.BankAccountWithdrawParam;
 import com.pro.model.entity.AccountEntity;
+import com.pro.model.param.UserAccountSaveParam;
+import com.pro.model.result.RestResult;
 
 public class ValidationChecker {
 
+    public static void userAccountSaveValidationCheck(UserAccountSaveParam param){
+        if(param.getBalance() == null || param.getEmail() == null || param.getPassword() == null || param.getName() == null){
+            throw new UserRuntimeException("회원가입 실패");
+        }
+    }
+    public static void depositValidationCheck(BankAccountDepositParam param) {
+        if(param.getBalance() == null || param.getAccountNumber() == null){
+            throw new BankRuntimeException("입금 실패 : 계좌 번호가 없습니다.");
+        }
 
-    public static void withrdrawValidationCheck(BankAccountWithdrawParam param, AccountEntity prevAccount) {
-        if(param.getBalance() == null || param.getAccount_number() == null){
+    }
+
+    public static void withrdrawValidationCheck(BankAccountWithdrawParam param) {
+        if(param.getBalance() == null || param.getAccountNumber() == null){
             throw new BankRuntimeException("출금 실패 : 계좌 번호가 없습니다.");
         }
 
-        if (prevAccount == null) {
-            throw new BankRuntimeException("출금 실패: 기존 계좌 정보를 찾을 수 없습니다.");
-        }
-
-        if (prevAccount.getBalance() < param.getBalance()) {
-            throw new BankRuntimeException("출금 실패: 잔액 부족");
-        }
     }
 
+
     public static void transferValidationCheck(BankAccountTransferParam param) {
-        if (param.getBalance() == null || param.getFromAccountNumber() == null || param.getTo_account_number() == null) {
+        if (param.getBalance() == null || param.getFromAccountNumber() == null || param.getToAccountNumber() == null) {
             throw new BankRuntimeException("이체 실패 : 계좌 번호가 없습니다.");
         }
-        if (param.getBalance() <= 0) {
-            throw new BankRuntimeException("이체 실패 : 이체 금액을 확인해주세요.");
-        }
+
     }
 }
