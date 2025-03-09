@@ -43,7 +43,7 @@ public class BankAccountController {
         param.setUser_id(ServiceUtil.createUserId());
         param.setRole("ROLE_ADMIN");
 
-        return bankService.save(param);
+        return bankFrontService.saveUserAccount(param);
     }
 
     @PostMapping("/deposit")

@@ -18,30 +18,35 @@ public class GlobalExceptionHandler {
         return new RestError("bank_exception", e.getMessage());
     }
 
+    @ExceptionHandler(UserRuntimeException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST) // 400
+    public RestError handleUserRuntimeException(UserRuntimeException e) {
+        return new RestError("user_exception", e.getMessage());
+    }
+
     @ExceptionHandler(NullPointerException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public RestError handleNullPointerException(NullPointerException e){
-        return new RestError("bad_request", e.getMessage());
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR) // 500
+    public RestError handleNullPointerException(NullPointerException e) {
+        return new RestError("internal_server_error", "서버 내부 오류 발생");
     }
 
     @ExceptionHandler(NoHandlerFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public RestError handleException(NoHandlerFoundException e){
-        return new RestError("not_found", e.getMessage());
+    @ResponseStatus(HttpStatus.NOT_FOUND) // 404
+    public RestError handleNoHandlerFoundException(NoHandlerFoundException e) {
+        return new RestError("not_found", "요청한 URL을 찾을 수 없습니다.");
     }
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public RestError handleMethodNotAllowed(HttpRequestMethodNotSupportedException e){
-        return new RestError("method_not_allowed", e.getMessage());
+    @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED) // 405
+    public RestError handleMethodNotAllowed(HttpRequestMethodNotSupportedException e) {
+        return new RestError("method_not_allowed", "허용되지 않은 HTTP 메서드입니다.");
     }
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR) // 500
-    public RestError handleBankRuntimeException(Exception e) {
-        // todo 500 에러가 발생하면 개발자가 제일 먼저 알아야 합니다.
-        //  텔레그램 BotFather 를 이용해서 메시지를 보낼수있습니다. 이부분 추가해보시면 좋겠습니다.
-        return new RestError("exception", e.getMessage());
+    public RestError handleGlobalException(Exception e) {
+        // TODO: 500 에러 발생 시 개발자가 즉시 알 수 있도록 알림 추가 (예: 텔레그램 Bot API 사용)
+        return new RestError("exception", "서버 내부 오류가 발생했습니다.");
     }
 
 
