@@ -62,7 +62,9 @@ public class AuthController {
         RefreshEntity refreshEntity = new RefreshEntity(
                 username,
                 refresh,
-                new Date(System.currentTimeMillis() + jwtUtil.getRefreshExpiredMs()).toString()
+                new Date(System.currentTimeMillis() + jwtUtil.getRefreshExpiredMs()).toString(),
+                newAccess,
+                new Date(System.currentTimeMillis() + jwtUtil.getAccessExpiredMs()).toString()
         );
 
         refreshTokenRepository.saveRefresh(refreshEntity);

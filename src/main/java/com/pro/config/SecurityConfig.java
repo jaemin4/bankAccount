@@ -64,7 +64,7 @@ public class SecurityConfig {
                 authenticationManager(authenticationConfiguration), jwtUtil,refreshTokenRepository),
                 UsernamePasswordAuthenticationFilter.class);
 
-        http.addFilterBefore(new SecurityLogoutFilter(jwtUtil), LogoutFilter.class);
+        http.addFilterBefore(new SecurityLogoutFilter(jwtUtil,refreshTokenRepository), LogoutFilter.class);
 
         http.sessionManagement((session) -> session
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS));

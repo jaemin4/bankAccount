@@ -9,8 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Mapper
 public interface RefreshTokenRepository {
     void saveRefresh(RefreshEntity refreshEntity);
-    Boolean existRefresh(@Param("refresh") String refresh);
+    Boolean existRefresh(@Param("refresh_token") String refresh_token);
 
     @Transactional
-    void deleteByRefresh(@Param("refresh") String refresh);
+    void deleteByRefresh(@Param("refresh_token") String refresh_token);
 }

@@ -4,16 +4,24 @@
 <mapper namespace="com.pro.securityAuth.RefreshTokenRepository">
 
     <select id="existRefresh" resultType="boolean">
-        SELECT COUNT(*) > 0 FROM t_auth_refresh WHERE refresh = #{refresh}
+        SELECT COUNT(*) > 0 FROM t_auth_refresh WHERE REFRESH_TOKEN = #{refresh_token}
     </select>
 
     <delete id="deleteByRefresh">
-        DELETE FROM t_auth_refresh WHERE REFRESH = #{refresh}
+        DELETE FROM t_auth_refresh WHERE REFRESH_TOKEN = #{refresh_token}
     </delete>
 
     <insert id="saveRefresh" parameterType="com.pro.securityAuth.RefreshEntity">
-        insert into t_auth_refresh (email,refresh,expiration)
-        values (#{email},#{refresh},#{expiration})
+        insert into t_auth_refresh (email,
+                                    refresh_token,
+                                    refresh_expiration,
+                                    access_token,
+                                    access_expiration)
+        values (#{email},
+                #{refresh_token},
+                #{refresh_expiration},
+                #{access_token},
+                #{access_expiration})
     </insert>
 
 

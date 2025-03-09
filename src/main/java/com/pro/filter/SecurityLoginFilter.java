@@ -54,7 +54,9 @@ public class SecurityLoginFilter extends UsernamePasswordAuthenticationFilter {
         RefreshEntity refreshEntity = new RefreshEntity(
                 username,
                 refreshToken,
-                new Date(System.currentTimeMillis() + jwtUtil.getRefreshExpiredMs()).toString()
+                new Date(System.currentTimeMillis() + jwtUtil.getRefreshExpiredMs()).toString(),
+                accessToken,
+                new Date(System.currentTimeMillis() + jwtUtil.getAccessExpiredMs()).toString()
         );
         refreshTokenRepository.saveRefresh(refreshEntity);
 
