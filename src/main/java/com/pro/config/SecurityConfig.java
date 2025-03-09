@@ -1,7 +1,7 @@
 package com.pro.config;
 
 
-import com.pro.securityAuth.RefreshTokenRepository;
+import com.pro.repository.RefreshTokenRepository;
 import com.pro.filter.SecurityJwtFilter;
 import com.pro.filter.SecurityLoginFilter;
 import com.pro.filter.SecurityLogoutFilter;

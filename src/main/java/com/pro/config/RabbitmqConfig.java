@@ -88,4 +88,5 @@ public class RabbitmqConfig {
     }
 
 
+    // todo Consumer 연결부분할때 @Profile("consumer")로 분리
 }

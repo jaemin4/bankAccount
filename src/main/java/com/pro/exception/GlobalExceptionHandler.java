@@ -1,6 +1,6 @@
 package com.pro.exception;
 
-import com.pro.response.RestError;
+import com.pro.model.result.RestError;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;

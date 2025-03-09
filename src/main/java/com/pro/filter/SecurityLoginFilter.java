@@ -1,7 +1,7 @@
 package com.pro.filter;
 
-import com.pro.securityAuth.RefreshTokenRepository;
-import com.pro.securityAuth.RefreshEntity;
+import com.pro.repository.RefreshTokenRepository;
+import com.pro.model.entity.RefreshEntity;
 import com.pro.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
