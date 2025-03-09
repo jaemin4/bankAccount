@@ -6,6 +6,7 @@ import com.pro.model.entity.UserEntity;
 import com.pro.model.param.*;
 import com.pro.model.result.RestResult;
 import com.pro.service.persist.BankService;
+import com.pro.util.ServiceUtil;
 import com.pro.util.ValidationChecker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,9 +31,10 @@ public class BankFrontService {
 
     public RestResult saveUserAccount(UserAccountSaveParam param){
         ValidationChecker.userAccountSaveValidationCheck(param);
+        param.setRole("ROLE_ADMIN");
 
         UserEntity userEntity = new UserEntity(
-                param.getUser_id(),
+                ServiceUtil.createUserId(),
                 param.getName(),
                 param.getRole(),
                 param.getEmail(),

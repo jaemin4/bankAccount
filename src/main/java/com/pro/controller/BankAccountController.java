@@ -39,9 +39,8 @@ public class BankAccountController {
     }
 
     @PostMapping("/save")
-    public RestResult save(@RequestBody UserAccountSaveParam param){
-        param.setUser_id(ServiceUtil.createUserId());
-        param.setRole("ROLE_ADMIN");
+    public RestResult save(@RequestBody UserAccountSaveParam param, @LoginUser String username){
+
 
         return bankFrontService.saveUserAccount(param);
     }
